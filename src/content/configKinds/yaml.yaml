@@ -1,0 +1,24 @@
+---
+name: YAML
+description: A human-readable data-serialization language, commonly used for configuration files. Similar to JSON, but more readable and easier to write and understand.
+website: https://yaml.org/
+logo: http://example.com/logo.png
+body: >
+  YAML (YAML Ain't Markup Language™) is one of the most commonly used configuration file formats used by developers. 
+  It mimics JSON in data structure but is more readable and easier to write and understand. YAML files use the .yaml or .yml extension, and is composed of colon-separated key-value pairs. The data types supported by YAML include numbers, booleans, strings, lists, and dictionaries.
+snippet:
+  lang: yaml
+  code: |
+    # This is a comment
+    key: value
+    another_key: another_value
+    a_list:
+      - item1
+      - item2
+      - item3
+    a_dictionary:
+      key: value
+      another_key: another_value
+    a_number: 123
+    a_boolean: true
+    a_string: "Hello World"

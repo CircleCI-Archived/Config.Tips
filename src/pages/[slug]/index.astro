@@ -1,0 +1,25 @@
+---
+import type { InferGetStaticPropsType } from 'astro';
+import { getCollection } from 'astro:content';
+export async function getStaticPaths() {
+  const configKinds = await getCollection("configKinds");
+  return configKinds.map(configKind => {
+    const { id, data: {name, body} } = configKind;
+    return {
+      params: { slug: id },
+      props: { name, body },
+    };
+  });
+}
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+const { name, body } = Astro.props;
+---
+<html>
+  <head>
+    <title>{name}</title>
+  </head>
+  <body>
+    <h1>{name}</h1>
+    <p>{body}</p>
+  </body>
+</html>
