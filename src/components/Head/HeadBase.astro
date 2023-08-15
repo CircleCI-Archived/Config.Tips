@@ -1,0 +1,54 @@
+---
+// Supports weights 100-900
+import '@fontsource-variable/inter';
+interface Props {
+title: string;
+description: string;
+ogImage?: string;
+slug: string
+}
+const { title, description, ogImage, slug} = Astro.props;
+const permalink = Astro.site + slug;
+const image = () => {
+	let img = ogImage || '/assets/opengraph/images/default-opengraph.png';
+	return `${Astro.site}/${img}`
+}
+---
+
+<!-- Global Metadata -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="sitemap" href="/sitemap-index.xml" />
+<link rel="icon" type="image/x-icon" href="/favicon.svg" />
+
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={permalink} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={image()} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={permalink} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={image()} />
+
+<style is:global>
+	*, *:before, *:after {
+		margin: 0;
+    padding: 0;
+		box-sizing: border-box;
+	}
+	html, body {
+		box-sizing: border-box;
+    min-height: 100vh;
+		height: 100%;
+	}
+</style>
