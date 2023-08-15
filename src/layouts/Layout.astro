@@ -1,9 +1,13 @@
 --- 
 import HeadBase from '../components/Head/HeadBase.astro';
+import NavBar from '../components/Navigation/NavBar.astro';
+
+// Supports weights 100-900
+import '@fontsource-variable/inter';
 interface Props {
 	title: string;
 	slug: string;
-	description: string
+	description?: string
 }
 
 const { 
@@ -15,7 +19,8 @@ const {
 <!DOCTYPE html>
 <html lang="en">
 	<HeadBase title={title} slug={new URL(slug, Astro.site).pathname} description={description} />
-	<body>
+	<body class="flex flex-col">
+		<NavBar />
 		<slot />
 	</body>
 </html>
@@ -29,6 +34,7 @@ const {
 		box-sizing: border-box;
     min-height: 100vh;
 		height: 100%;
+		font-family: 'Inter Variable', sans-serif;
 	}
 </style>
 
