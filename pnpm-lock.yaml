@@ -4,6 +4,9 @@ dependencies:
   astro:
     specifier: ^2.10.7
     version: 2.10.7
+  astro-navbar:
+    specifier: ^2.0.1
+    version: 2.0.1
 
 packages:
 
@@ -956,6 +959,10 @@ packages:
 
   /array-iterate@2.0.1:
     resolution: {integrity: sha512-I1jXZMjAgCMmxT4qxXfPXa6SthSoE8h6gkSI9BGGNv8mP8G/v0blc+qFnZu6K42vTOiuME596QaLO0TP3Lk0xg==}
+    dev: false
+
+  /astro-navbar@2.0.1:
+    resolution: {integrity: sha512-pnnsYJEmXfrmwNSHuvPk5oXvzePON4g3UGY7I0Un6ZL34Ua6pve+nFOqoKwmRXqZl3UV22+awsP3uk5l2AQTNA==}
     dev: false
 
   /astro@2.10.7:
