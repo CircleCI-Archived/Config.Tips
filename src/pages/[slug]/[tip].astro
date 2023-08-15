@@ -1,0 +1,26 @@
+---
+import type { InferGetStaticPropsType } from 'astro';
+import { getCollection } from 'astro:content';
+export async function getStaticPaths() {
+  const tips = await getCollection("tips");
+  return tips.map(tip => {
+    const { slug, data: {title, snippet, kind} } = tip;
+    return {
+      params: { tip: slug, slug: kind.id },
+      props: { title, snippet, kind },
+    };
+  });
+}
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+const { title, snippet, kind } = Astro.props;
+---
+<html>
+  <head>
+    <title>{title}</title>
+  </head>
+  <body>
+    <h1>{title}</h1>
+    <span>{kind.id}</span>
+    <p>{snippet}</p>
+  </body>
+</html>
