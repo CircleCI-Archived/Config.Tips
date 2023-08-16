@@ -1,0 +1,26 @@
+---
+import type { InferGetStaticPropsType } from 'astro';
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+export async function getStaticPaths() {
+  const configKinds = await getCollection("configKinds");
+  return configKinds.map(configKind => {
+    const { id: kindId, data: {name, body, description} } = configKind;
+    return {
+      params: { configKind: kindId },
+      props: { name, body, description },
+    };
+  });
+}
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+const { name, body, description } = Astro.props;
+---
+<Layout title={"Config.Tips - " + name} slug="/">
+		<header class="flex md: flex-row gap-6">
+      <h1>{name}</h1>
+      <p>{description}</p>
+		</header>
+		<div>
+      <p>{body}</p>
+    </div>
+</Layout>

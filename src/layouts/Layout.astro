@@ -21,7 +21,9 @@ const {
 	<HeadBase title={title} slug={new URL(slug, Astro.site).pathname} description={description} />
 	<body class="flex flex-col">
 		<NavBar />
-		<slot />
+		<main class="px-4">
+			<slot />
+		</main>
 	</body>
 </html>
 <style is:global>
@@ -35,6 +37,14 @@ const {
     min-height: 100vh;
 		height: 100%;
 		font-family: 'Inter Variable', sans-serif;
+	}
+
+	body {
+		@apply bg-gradient-to-b from-gray-950 to-gray-900 text-gray-50;
+	}
+
+	h1, h2, h3, h4, h5, h6 {
+		@apply p-2 text-white font-bold;
 	}
 </style>
 
