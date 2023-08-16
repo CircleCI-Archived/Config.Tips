@@ -15,5 +15,8 @@
     "astro": "^2.10.7",
     "astro-navbar": "^2.0.1",
     "tailwindcss": "^3.0.24"
+  },
+  "devDependencies": {
+    "shiki": "^0.14.3"
   }
 }

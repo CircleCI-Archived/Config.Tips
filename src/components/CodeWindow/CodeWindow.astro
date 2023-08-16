@@ -1,0 +1,17 @@
+---
+import { Code } from 'astro/components';
+import type { Lang } from '../../content/config';
+import type { z } from "astro:content";
+type Props = {
+  snippet: string,
+  lang: z.infer<typeof Lang>,
+}
+const { snippet, lang } = Astro.props
+---
+<div class="flex flex-col rounded-sm border" role="region" aria-labelledby="filename">
+  <div id="filename" class="">
+    <span role="presentation">example.js</span>
+  </div>
+  <Code code={snippet} lang={lang} />
+</div>
+
