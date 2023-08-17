@@ -1,8 +1,8 @@
 ---
 import type { InferGetStaticPropsType } from 'astro';
-import { Code } from 'astro/components';
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
+import CodeWindow from '../../components/CodeWindow/CodeWindow.astro';
 
 export async function getStaticPaths() {
   const configKinds = await getCollection("configKinds");
@@ -40,7 +40,7 @@ const { configType, title, description, body, snippet, lang, slug } = Astro.prop
         <p>{body}</p>
       </div>
       <div>
-        <Code code={snippet} lang={lang} />
+        <CodeWindow snippet={snippet} lang={lang} />
       </div>
     </div>
 </Layout>

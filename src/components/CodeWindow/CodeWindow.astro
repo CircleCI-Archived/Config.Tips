@@ -1,17 +1,36 @@
 ---
-import { Code } from 'astro/components';
-import type { Lang } from '../../content/config';
-import type { z } from "astro:content";
+// Based on https://github.com/withastro/astro/blob/main/packages/astro/components/Code.astro
+import * as shiki from 'shiki';
 type Props = {
   snippet: string,
-  lang: z.infer<typeof Lang>,
+  lang: shiki.Lang
+  filePath?: string
 }
-const { snippet, lang } = Astro.props
----
-<div class="flex flex-col rounded-sm border" role="region" aria-labelledby="filename">
-  <div id="filename" class="">
-    <span role="presentation">example.js</span>
-  </div>
-  <Code code={snippet} lang={lang} />
-</div>
+const { snippet, lang , filePath = 'unknown'} = Astro.props
+const highlighter = await shiki.getHighlighter({theme: 'github-dark-dimmed', langs: [lang]})
+const tokens = highlighter.codeToThemedTokens(snippet, lang)
+const _theme = highlighter.getTheme();
+const html = shiki.renderToHtml(tokens, {
+  themeName: _theme.name,
+  fg: _theme.fg,
+  bg: "transparent",
+  elements: {
+		pre({ className, children }) {
+			// Swap to `code` tag if inline
+			// Replace "shiki" class naming with "astro-code"
+			className = className.replace(/shiki/g, 'code-window');
+			return `<pre class="${className} px-2" tabindex="0">${children}</pre>`;
+		},
+		code({ children }) {
+			return `<code>${children}</code>`;
+		},
+	},
+})
 
+---
+<div class="flex flex-col rounded-lg border" role="region" aria-labelledby="filename">
+  <div id="filename" class="flex bg-slate-950 rounded-t-md">
+    <span class="p-2 bg-slate-800 rounded-t-md" role="presentation">{filePath}</span>
+  </div>
+  <Fragment set:html={html} />
+</div>
