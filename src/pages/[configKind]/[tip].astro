@@ -18,7 +18,7 @@ export async function getStaticPaths() {
         tip: tip.slug
       },
       props: {
-        configType: configKind.data.name,
+        configType: configKind.data,
         title: tip.data.title,
         description: tip.data.description,
         body: tip.body,
@@ -33,14 +33,14 @@ type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
 const { configType, title, description, body, snippet, lang, slug } = Astro.props;
 ---
-<Layout title={`Config.Tips - ${configType}: ${title}`} slug={slug} description={description}>
+<Layout title={`Config.Tips - ${configType.name}: ${title}`} slug={slug} description={description}>
 		<div>
       <div>
         <h1>{title}</h1>
         <p>{body}</p>
       </div>
       <div>
-        <CodeWindow snippet={snippet} lang={lang} />
+        <CodeWindow snippet={snippet} lang={lang} filePath={configType.snippet.filePath} />
       </div>
     </div>
 </Layout>
