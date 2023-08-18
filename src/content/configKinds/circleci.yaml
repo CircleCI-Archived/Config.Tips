@@ -6,6 +6,7 @@ body: 'CircleCI is a continuous integration and change validation plaform for De
 logo: http://example.com/logo.png
 snippet:
   lang: yaml
+  filePath: '.circleci/config.yml'
   code: |
     version: 2.1
     # Define the jobs we want to run for this project

@@ -9,6 +9,7 @@ body: >
   Check the `package.json` file for `scripts` to see what commands are available to run, example: `npm run dev`.
 snippet:
   lang: json
+  filePath: 'package.json'
   code: |
     {
       "name": "",

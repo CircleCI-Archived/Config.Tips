@@ -102,6 +102,7 @@ const configKindCollection = defineCollection({
     snippet: z.object({
       code: z.string(),
       lang: Lang,
+      filePath: z.string(),
     }),
     website: z.string().url(),
     logo: z.string().url(),

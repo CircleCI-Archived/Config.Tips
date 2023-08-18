@@ -8,6 +8,7 @@ body: >
   It mimics JSON in data structure but is more readable and easier to write and understand. YAML files use the .yaml or .yml extension, and is composed of colon-separated key-value pairs. The data types supported by YAML include numbers, booleans, strings, lists, and dictionaries.
 snippet:
   lang: yaml
+  filePath: 'config.yml'
   code: |
     # This is a comment
     key: value
