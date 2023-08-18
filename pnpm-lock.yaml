@@ -13,6 +13,9 @@ dependencies:
   astro-navbar:
     specifier: ^2.0.1
     version: 2.0.1
+  marked:
+    specifier: ^7.0.3
+    version: 7.0.3
   tailwindcss:
     specifier: ^3.0.24
     version: 3.3.3
@@ -2099,6 +2102,12 @@ packages:
 
   /markdown-table@3.0.3:
     resolution: {integrity: sha512-Z1NL3Tb1M9wH4XESsCDEksWoKTdlUafKc4pt0GRwjUyXaCFZ+dc3g2erqB6zm3szA2IUSi7VnPI+o/9jnxh9hw==}
+    dev: false
+
+  /marked@7.0.3:
+    resolution: {integrity: sha512-ev2uM40p0zQ/GbvqotfKcSWEa59fJwluGZj5dcaUOwDRrB1F3dncdXy8NWUApk4fi8atU3kTBOwjyjZ0ud0dxw==}
+    engines: {node: '>= 16'}
+    hasBin: true
     dev: false
 
   /mdast-util-definitions@5.1.2:

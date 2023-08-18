@@ -1,5 +1,6 @@
 ---
 import type { InferGetStaticPropsType } from 'astro';
+import {marked} from 'marked';
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import CodeWindow from '../../components/CodeWindow/CodeWindow.astro';
@@ -21,7 +22,7 @@ export async function getStaticPaths() {
         configType: configKind.data,
         title: tip.data.title,
         description: tip.data.description,
-        body: tip.body,
+        body: marked(tip.body),
         snippet: tip.data.snippet,
         lang: configKind.data.snippet.lang,
         slug: tip.slug,
@@ -34,12 +35,12 @@ type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 const { configType, title, description, body, snippet, lang, slug } = Astro.props;
 ---
 <Layout title={`Config.Tips - ${configType.name}: ${title}`} slug={slug} description={description}>
-		<div>
-      <div>
-        <h1>{title}</h1>
-        <p>{body}</p>
+		<div class="flex flex-col md:flex-row gap-4">
+      <div class="flex-1">
+        <h1 class="text-3xl font-bold">{title}</h1>
+        <article set:html={body} />
       </div>
-      <div>
+      <div class="flex w-1/2">
         <CodeWindow snippet={snippet} lang={lang} filePath={configType.snippet.filePath} />
       </div>
     </div>
