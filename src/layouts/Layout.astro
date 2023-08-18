@@ -21,7 +21,7 @@ const {
 	<HeadBase title={title} slug={new URL(slug, Astro.site).pathname} description={description} />
 	<body class="flex flex-col">
 		<NavBar />
-		<main class="px-4">
+		<main class="px-4 md:px-12 mx-auto">
 			<slot />
 		</main>
 	</body>
