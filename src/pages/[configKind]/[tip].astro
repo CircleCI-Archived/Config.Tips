@@ -40,7 +40,7 @@ const { configType, title, description, body, snippet, lang, slug } = Astro.prop
         <h1 class="text-3xl font-bold">{title}</h1>
         <article set:html={body} />
       </div>
-      <div class="flex w-1/2">
+      <div class="flex md:w-1/2">
         <CodeWindow snippet={snippet} lang={lang} filePath={configType.snippet.filePath} />
       </div>
     </div>
