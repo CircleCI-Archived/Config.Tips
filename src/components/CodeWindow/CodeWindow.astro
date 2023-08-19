@@ -32,7 +32,7 @@ const html = shiki.renderToHtml(tokens, {
   <div id="filename" class="flex bg-slate-950 rounded-t-md overflow-x-auto">
     <span class="p-2 bg-slate-800 rounded-t-md" role="presentation">{filePath}</span>
   </div>
-  <div class="overflow-auto w-full">
+  <div class="overflow-auto w-full h-full">
     <Fragment set:html={html} />
   </div>
 </div>
