@@ -1,36 +1,52 @@
 ---
 // Based on https://github.com/withastro/astro/blob/main/packages/astro/components/Code.astro
-import * as shiki from 'shiki';
+import Icon from "astro-icon";
+import * as shiki from "shiki";
+import Link from "../Link.astro";
 type Props = {
-  snippet: string,
-  lang: shiki.Lang
-  filePath?: string
-}
-const { snippet, lang , filePath = 'unknown'} = Astro.props
-const highlighter = await shiki.getHighlighter({theme: 'github-dark-dimmed', langs: [lang]})
-const tokens = highlighter.codeToThemedTokens(snippet, lang)
+  snippet: string;
+  lang: shiki.Lang;
+  filePath?: string;
+};
+const { snippet, lang, filePath = "unknown" } = Astro.props;
+const highlighter = await shiki.getHighlighter({
+  theme: "github-dark-dimmed",
+  langs: [lang],
+});
+const tokens = highlighter.codeToThemedTokens(snippet, lang);
 const _theme = highlighter.getTheme();
 const html = shiki.renderToHtml(tokens, {
   themeName: _theme.name,
   fg: _theme.fg,
   bg: "transparent",
   elements: {
-		pre({ className, children }) {
-			// Swap to `code` tag if inline
-			// Replace "shiki" class naming with "astro-code"
-			className = className.replace(/shiki/g, 'code-window');
-			return `<pre class="${className} px-2 break-words" tabindex="0">${children}</pre>`;
-		},
-		code({ children }) {
-			return `<code>${children}</code>`;
-		},
-	},
-})
-
+    pre({ className, children }) {
+      // Swap to `code` tag if inline
+      // Replace "shiki" class naming with "astro-code"
+      className = className.replace(/shiki/g, "code-window");
+      return `<pre class="${className} px-2 break-words" tabindex="0">${children}</pre>`;
+    },
+    code({ children }) {
+      return `<code>${children}</code>`;
+    },
+  },
+});
 ---
-<div class="flex flex-col rounded-md border border-indigo-300 shadow-md w-full" role="region" aria-labelledby="filename">
-  <div id="filename" class="flex bg-slate-950 rounded-t-md overflow-x-auto">
-    <span class="p-2 bg-gray-800 rounded-t-sm" role="presentation">{filePath}</span>
+
+<div
+  class="flex flex-col rounded-md border border-indigo-300 shadow-md w-full"
+  role="region"
+  aria-labelledby="filename"
+>
+  <div class="flex justify-between mr-2 bg-slate-950 rounded-t-md overflow-x-auto">
+    <span class="p-2 bg-gray-800 rounded-t-sm" id="filename" role="presentation"
+      >{filePath}</span
+    >
+    <div class="flex items-center">
+      <div class="flex bg-gray-700 rounded-sm border border-indigo-300">
+        <button class="p-1.5 hover:bg-gray-600"><Icon name="mdi:content-copy" class="w-4 h-4" /></button>
+      </div>
+    </div>
   </div>
   <div class="overflow-auto w-full h-full bg-gray-800 rounded-b-md">
     <Fragment set:html={html} />
