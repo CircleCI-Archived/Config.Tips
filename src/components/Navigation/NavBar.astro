@@ -1,19 +1,24 @@
 ---
 import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
+import Link from "../Link.astro";
 ---
 
 <header class="lg:flex p-5  gap-5">
   <Astronav>
     <div class="flex w-full justify-between">
-      <a>Your Logo</a>
+      <Link href="/">Config.Tips</Link>
       <div class="block lg:hidden">
         <MenuIcon class="w-4 h-4 text-zinc-800" />
       </div>
     </div>
     <MenuItems class="hidden lg:flex">
       <ul class="flex flex-col lg:flex-row lg:gap-5">
-        <li>Home</li>
-        <li>About</li>
+        <li>
+          <Link href="https://circleci.com/">Continious Integration</Link>
+        </li>
+        <li>
+          <Link href="/about">About</Link>
+        </li>
       </ul>
     </MenuItems>
   </Astronav>
