@@ -19,12 +19,14 @@ type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 const { name, htmlBody, description, snippet } = Astro.props;
 ---
 <Layout title={"Config.Tips - " + name} slug="/">
-		<header class="flex md: flex-row gap-6">
-      <h1>{name}</h1>
-      <p>{description}</p>
-		</header>
-		<div class="flex flex-col md:flex-row gap-4">
-      <div><Fragment set:html={htmlBody} /></div>
-      <div><CodeWindow snippet={snippet.code} lang={snippet.lang} filePath={snippet.filePath} /></div>
+		<div class="flex flex-col gap-4">
+      <header class="flex md: flex-row gap-6">
+        <h1>{name}</h1>
+        <p>{description}</p>
+      </header>
+      <div class="flex flex-col md:flex-row gap-4">
+        <div><Fragment set:html={htmlBody} /></div>
+        <div><CodeWindow snippet={snippet.code} lang={snippet.lang} filePath={snippet.filePath} /></div>
+      </div>
     </div>
 </Layout>
