@@ -43,6 +43,30 @@ const {
 		@apply bg-zinc-900 text-zinc-50;
 	}
 
+	*::-webkit-scrollbar {
+			width: 10px;
+			height: 10px;
+	}
+
+	*::-webkit-scrollbar-track {
+			@apply bg-gray-950 rounded-full; /* Or your desired color using Tailwind classes */
+	}
+
+	*::-webkit-scrollbar-thumb {
+			@apply bg-gray-700 rounded-full; 
+			/* Rounded and color using Tailwind utilities */
+	}
+
+	*::-webkit-scrollbar-thumb:hover {
+			@apply bg-indigo-300;
+	}
+
+	/* Global Scrollbar Styles for Firefox */
+	* {
+			scrollbar-width: thin;
+			scrollbar-color: #4B5563 #1F2937;
+	}
+	
 	h1, h2, h3, h4, h5, h6 {
 		@apply p-2 text-white font-bold;
 	}
