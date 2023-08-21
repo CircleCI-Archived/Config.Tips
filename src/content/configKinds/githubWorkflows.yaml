@@ -1,0 +1,29 @@
+name:  GitHub Workflows
+description: |
+  Workflows from Github are configurable automated process that will run one or more jobs on specified events in GitHub.
+website: https://docs.github.com/en/actions/using-workflows
+body: |
+  GitHub Workflows are configurable automated process that will run one or more jobs on specified events in GitHub. Workflows are defined in a YAML file in the .github/workflows directory of your repository. The workflow file can be stored in the default branch or in any branch or tag in the repository. Workflows must have at least one job. Jobs run in parallel by default. To run jobs sequentially, you can define dependencies on other jobs using the `needs` keyword.
+logo: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
+snippet:
+  lang: yaml
+  filePath: '.github/workflows/main.yml'
+  code: |
+    name: CI
+
+    on:
+      push:
+        branches: [ main ]
+
+    jobs:
+      build:
+        runs-on: ubuntu-latest
+
+        steps:
+          - uses: actions/checkout@v2
+          - name: Run a one-line script
+            run: echo Hello, world!
+          - name: Run a multi-line script
+            run: |
+              echo Add other actions to build,
+              echo test, and deploy your project.
