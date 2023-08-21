@@ -105,7 +105,7 @@ const configKindCollection = defineCollection({
       filePath: z.string(),
     }),
     website: z.string().url(),
-    logo: z.string().url(),
+    logo: z.string(),
   }),
 });
 
