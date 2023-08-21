@@ -1,0 +1,29 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+type CustomizedAnchorProps = HTMLAttributes<'a'> & {
+  href: string;
+  className?: string;
+}
+export type Props = CustomizedAnchorProps
+
+const url = new URL(Astro.props.href, Astro.url)
+const isExternal = url.host !== Astro.url.host
+const isCurrent = url.href === Astro.url.href
+---
+<a
+	aria-current={isCurrent ? 'page' : null}
+	rel={isExternal ? 'noopener' : null}
+  target={isExternal ? '_blank' : null}
+	{...Astro.props}
+><slot /></a>
+
+<style>
+  a {
+    display: inline-flex;
+    align-items: center;
+    min-width: 48px;
+    min-height: 48px;
+    text-decoration: none;
+    color: currentColor;
+  }
+</style>
