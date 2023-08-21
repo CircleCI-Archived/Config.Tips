@@ -1,15 +1,33 @@
 ---
+import CodeWindow from '../components/CodeWindow/CodeWindow.astro';
 import Layout from '../layouts/Layout.astro';
+
+const exampleSnippet = `
+# Your favorite developer configs
+# tips, tricks, and hacks
+# +-----------------------------+
+# |                             |
+# |  Config.Tips                |
+# |                             |
+# |  Submit your tip 🕵️‍♂️         |
+# |  Share or snag!             |
+# |                             |
+# +-----------------------------+
+
+`
 ---
 
 <Layout title="Config.Tips - Home" slug="/">
 		<header class="flex md: flex-row gap-6">
 			<section>
-				<h1>Config.Tips</h1>
+				<h1 class="gradient-text bg-gradient-to-r from-purple-500 to-red-500 font-black text-6xl">Open-Source Config Tips</h1>
 				<p>An open-source collection of useful snippets and tips for your favorite developer configs.</p>
+				<form>
+					<input type="text" placeholder="Search for a tip (ex: 'package.json' or 'circleci test splitting')" class="border-2 border-indigo-300 bg-gray-950 w-full rounded-md p-2"/>
+				</form>
 			</section>
 			<section>
-				<p>img</p>
+				<CodeWindow lang="yaml" snippet={exampleSnippet}/>
 			</section>
 		</header>
 		<section>
