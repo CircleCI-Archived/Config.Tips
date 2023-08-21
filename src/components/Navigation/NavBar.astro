@@ -3,10 +3,10 @@ import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
 import Link from "../Link.astro";
 ---
 
-<header class="lg:flex p-5  gap-5">
+<header class="lg:flex p-5 shadow gap-5 mb-2">
   <Astronav>
     <div class="flex w-full justify-between">
-      <Link href="/">Config.Tips</Link>
+      <Link href="/" className="font-bold">Config.Tips</Link>
       <div class="block lg:hidden">
         <MenuIcon class="w-4 h-4 text-zinc-800" />
       </div>
@@ -14,10 +14,13 @@ import Link from "../Link.astro";
     <MenuItems class="hidden lg:flex">
       <ul class="flex flex-col lg:flex-row lg:gap-5">
         <li>
-          <Link href="https://circleci.com/">Continious Integration</Link>
+          <Link href="/about">About</Link>
         </li>
         <li>
-          <Link href="/about">About</Link>
+          <Link href="https://github.com/CircleCI-Public">Contribute</Link>
+        </li>
+        <li>
+          <Link href="https://circleci.com/">Continious Integration</Link>
         </li>
       </ul>
     </MenuItems>
