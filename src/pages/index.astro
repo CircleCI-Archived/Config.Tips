@@ -1,7 +1,9 @@
 ---
+import { getCollection } from "astro:content";
 import CodeWindow from "../components/CodeWindow/CodeWindow.astro";
 import Link from "../components/Link.astro";
 import Layout from "../layouts/Layout.astro";
+import Card from "../components/UI/Card.astro";
 
 const exampleSnippet = `
 # Your favorite developer configs
@@ -14,6 +16,8 @@ const exampleSnippet = `
 # |                             |
 # +-----------------------------+
 `;
+
+const configKinds = await getCollection("configKinds");
 ---
 
 <Layout title="Config.Tips - Home" slug="/">
@@ -49,5 +53,11 @@ const exampleSnippet = `
         class="border-2 border-indigo-300 bg-gray-950 w-full rounded-md p-2"
       />
     </form>
+    <div class="my-2 grid grid-cols-1 md:grid-cols-2 gap-4">
+      {configKinds.map((configKind) => (
+        <Card href={`/${configKind.id}/`} cardBody={configKind.data.name} icon={configKind.data.logo} className="w-full shadow bg-zinc-800 border border-zinc-700 rounded p-2 hover:bg-indigo-300 hover:text-gray-900 text-gray-300" />
+      ))
+      }
+    </div>
   </section>
 </Layout>
