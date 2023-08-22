@@ -4,19 +4,29 @@ import {marked} from 'marked';
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import CodeWindow from '../../components/CodeWindow/CodeWindow.astro';
+import Card from '../../components/UI/Card.astro';
+
 export async function getStaticPaths() {
-  const configKinds = await getCollection("configKinds");
-  return configKinds.map(configKind => {
-    const { id: kindId, data: {name, body, description, snippet, logo} } = configKind;
-    const htmlBody = marked(body);
-    return {
-      params: { configKind: kindId },
-      props: { name, htmlBody, description, snippet, logo },
-    };
-  });
+    const configKinds = await getCollection("configKinds");
+
+    const paths = await Promise.all(configKinds.map(async (configKind) => {
+        const allTips = await getCollection("tips");
+        const tips = allTips.filter(tip => tip.data.kind.id === configKind.id);
+        const { id: kindId, data: { name, body, description, snippet, logo } } = configKind;
+        const htmlBody = marked(body);
+        return {
+            params: { configKind: kindId },
+            props: { name, htmlBody, description, snippet, logo, tips, kindId },
+        };
+    }));
+
+    return paths;
 }
+
+// Your type and props extraction remain unchanged.
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
-const { name, htmlBody, description, snippet, logo } = Astro.props;
+const { name, htmlBody, description, snippet, logo, tips, kindId } = Astro.props;
+
 ---
 <Layout title={"Config.Tips - " + name} slug="/" description={description}>
 		<div class="flex flex-col gap-4">
@@ -28,5 +38,11 @@ const { name, htmlBody, description, snippet, logo } = Astro.props;
         <Fragment set:html={htmlBody} />
       </header>
       <CodeWindow snippet={snippet.code} lang={snippet.lang} filePath={snippet.filePath} />
+      <h2 class="text-xl font-bold">Tips</h2>
+      <div class="my-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+        {tips.map(tip => (
+          <Card cardBody={tip.data.title} href={`/${kindId}/${tip.slug}`} className="w-full shadow bg-zinc-800 border border-zinc-700 rounded p-2 hover:bg-indigo-300 hover:text-gray-900 text-gray-300" />
+        ))}
+      </div>
     </div>
 </Layout>
