@@ -21,9 +21,9 @@ const { name, htmlBody, description, snippet, logo } = Astro.props;
 <Layout title={"Config.Tips - " + name} slug="/" description={description}>
 		<div class="flex flex-col gap-4">
       <header class="flex flex-row gap-6">
-        <div class="flex flex-col">
+        <div class="flex flex-grow flex-col items-center">
           <img src={logo} alt={name} class="w-24 h-24 invert opacity-90" />
-          <h1>{name}</h1>
+          <h1 class="whitespace-nowrap">{name}</h1>
         </div>
         <Fragment set:html={htmlBody} />
       </header>
