@@ -7,20 +7,21 @@ import CodeWindow from '../../components/CodeWindow/CodeWindow.astro';
 export async function getStaticPaths() {
   const configKinds = await getCollection("configKinds");
   return configKinds.map(configKind => {
-    const { id: kindId, data: {name, body, description, snippet} } = configKind;
+    const { id: kindId, data: {name, body, description, snippet, logo} } = configKind;
     const htmlBody = marked(body);
     return {
       params: { configKind: kindId },
-      props: { name, htmlBody, description, snippet },
+      props: { name, htmlBody, description, snippet, logo },
     };
   });
 }
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
-const { name, htmlBody, description, snippet } = Astro.props;
+const { name, htmlBody, description, snippet, logo } = Astro.props;
 ---
 <Layout title={"Config.Tips - " + name} slug="/">
 		<div class="flex flex-col gap-4">
       <header class="flex md: flex-row gap-6">
+        <img src={logo} alt={name} class="w-24 h-24 invert opacity-90" />
         <h1>{name}</h1>
         <p>{description}</p>
       </header>
