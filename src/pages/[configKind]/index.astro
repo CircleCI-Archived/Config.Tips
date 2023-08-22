@@ -18,16 +18,15 @@ export async function getStaticPaths() {
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 const { name, htmlBody, description, snippet, logo } = Astro.props;
 ---
-<Layout title={"Config.Tips - " + name} slug="/">
+<Layout title={"Config.Tips - " + name} slug="/" description={description}>
 		<div class="flex flex-col gap-4">
-      <header class="flex md: flex-row gap-6">
-        <img src={logo} alt={name} class="w-24 h-24 invert opacity-90" />
-        <h1>{name}</h1>
-        <p>{description}</p>
+      <header class="flex flex-row gap-6">
+        <div class="flex flex-col">
+          <img src={logo} alt={name} class="w-24 h-24 invert opacity-90" />
+          <h1>{name}</h1>
+        </div>
+        <Fragment set:html={htmlBody} />
       </header>
-      <div class="flex flex-col md:flex-row gap-4">
-        <div><Fragment set:html={htmlBody} /></div>
-        <div><CodeWindow snippet={snippet.code} lang={snippet.lang} filePath={snippet.filePath} /></div>
-      </div>
+      <CodeWindow snippet={snippet.code} lang={snippet.lang} filePath={snippet.filePath} />
     </div>
 </Layout>
