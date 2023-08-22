@@ -43,7 +43,9 @@ const html = shiki.renderToHtml(tokens, {
     >
     <div class="flex items-center">
       <div class="flex bg-gray-700 rounded-sm border border-indigo-300">
-        <button class="p-1.5 hover:bg-indigo-300"><Icon name="mdi:content-copy" class="w-4 h-4" /></button>
+        <button class="p-1.5 hover:bg-indigo-300" aria-label="Copy file path">
+          <Icon name="mdi:content-copy" class="w-4 h-4" aria-hidden="true" />
+        </button>
       </div>
     </div>
   </div>
