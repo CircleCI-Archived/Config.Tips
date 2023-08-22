@@ -1,5 +1,6 @@
 ---
 import CodeWindow from "../components/CodeWindow/CodeWindow.astro";
+import Link from "../components/Link.astro";
 import Layout from "../layouts/Layout.astro";
 
 const exampleSnippet = `
@@ -27,6 +28,14 @@ const exampleSnippet = `
         An open-source collection of useful snippets and tips for your favorite
         developer configs.
       </p>
+      <div class="flex flex-row py-2 gap-2">
+        <Link href="github.com" class="text-indigo-300 px-2 py-1 rounded border border-indigo-300">
+        Submit a tip
+      </Link>
+      <Link href="github.com" class="text-pink-200 px-2 py-1 rounded border border-pink-200">
+        Explore
+      </Link>
+      </div>
     </section>
     <section>
       <CodeWindow lang="yaml" snippet={exampleSnippet} filePath="config.tips" />
