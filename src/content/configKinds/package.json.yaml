@@ -2,14 +2,14 @@
 name: package.json
 description: The manifest file for Node.js projects. It contains the project's dependencies, build scripts, and other metadata.
 website: https://docs.npmjs.com/cli/configuring-npm/package-json
-logo: '/assets/images/logos/npm.svg'
+logo: "/assets/images/logos/npm.svg"
 body: >
   `package.json` is a manifest file for Node.js projects, which includes things like metadata (the project's name, author, etc.) and a list of dependencies (other packages that the project depends on).
   It is usually located at the root of a project, and you can tell which package manager is being used by the accompanying 'lock' file. For example, `package-lock.json` is used by npm, `yarn.lock` is used by Yarn, and `pnpm-lock.yaml` is used by pnpm.
   Check the `package.json` file for `scripts` to see what commands are available to run, example: `npm run dev`.
 snippet:
   lang: json
-  filePath: 'package.json'
+  filePath: "package.json"
   code: |
     {
       "name": "",

@@ -1,6 +1,6 @@
 import { z, defineCollection, reference } from "astro:content";
 
-const seoDescription = z.string().min(100).max(160)
+const seoDescription = z.string().min(100).max(160);
 
 // A Zod representation of some of the languages supported by Shiki for syntax hilighting
 export const Lang = z.union([
@@ -115,7 +115,10 @@ const tipCollection = defineCollection({
     title: z.string(),
     description: seoDescription,
     snippet: z.string(),
-    publishDate: z.string().transform((str) => new Date(str)).default(() => new Date().toDateString()),
+    publishDate: z
+      .string()
+      .transform((str) => new Date(str))
+      .default(() => new Date().toDateString()),
     kind: reference("configKinds"),
   }),
 });
@@ -123,4 +126,4 @@ const tipCollection = defineCollection({
 export const collections = {
   configKinds: configKindCollection,
   tips: tipCollection,
-}
+};
