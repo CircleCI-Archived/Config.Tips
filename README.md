@@ -2,7 +2,7 @@
 
 Config.Tips is an Open-Source repository of hacks, tips, and tricks, for your favorite development configs. Join the community and snag or share!
 
-Config.Tips is build with 💜 using [Astro](https://astro.build)
+Made by [ContinuousLabs](https://continuouslabs.circleci.com/) from [CircleCI](https://circleci.com) with ♥ using [Astro](https://astro.build/).
 
 ## Contributing
 
