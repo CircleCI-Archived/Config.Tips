@@ -55,7 +55,7 @@ const configKinds = await getCollection("configKinds");
     </form>
     <div class="my-4 grid grid-cols-1 md:grid-cols-2 gap-4">
       {configKinds.map((configKind) => (
-        <Card href={`/${configKind.id}/`} cardBody={configKind.data.name} icon={configKind.data.logo} className="w-full shadow bg-zinc-800 border border-zinc-700 rounded p-2 hover:bg-indigo-300 hover:text-gray-900 text-gray-300" />
+        <Card href={`/c/${configKind.id}/`} cardBody={configKind.data.name} icon={configKind.data.logo} className="w-full shadow bg-zinc-800 border border-zinc-700 rounded p-2 hover:bg-indigo-300 hover:text-gray-900 text-gray-300" />
       ))
       }
     </div>

@@ -2,8 +2,8 @@
 import type { InferGetStaticPropsType } from 'astro';
 import {marked} from 'marked';
 import { getCollection } from 'astro:content';
-import Layout from '../../layouts/Layout.astro';
-import CodeWindow from '../../components/CodeWindow/CodeWindow.astro';
+import Layout from '../../../layouts/Layout.astro';
+import CodeWindow from '../../../components/CodeWindow/CodeWindow.astro';
 
 export async function getStaticPaths() {
   const configKinds = await getCollection("configKinds");

@@ -2,9 +2,9 @@
 import type { InferGetStaticPropsType } from 'astro';
 import {marked} from 'marked';
 import { getCollection } from 'astro:content';
-import Layout from '../../layouts/Layout.astro';
-import CodeWindow from '../../components/CodeWindow/CodeWindow.astro';
-import Card from '../../components/UI/Card.astro';
+import Layout from '../../../layouts/Layout.astro';
+import CodeWindow from '../../../components/CodeWindow/CodeWindow.astro';
+import Card from '../../../components/UI/Card.astro';
 
 export async function getStaticPaths() {
     const configKinds = await getCollection("configKinds");
@@ -41,7 +41,7 @@ const { name, htmlBody, description, snippet, logo, tips, kindId } = Astro.props
       <h2 class="text-xl font-bold">Tips</h2>
       <div class="my-4 grid grid-cols-1 md:grid-cols-2 gap-4">
         {tips.map(tip => (
-          <Card cardBody={tip.data.title} href={`/${kindId}/${tip.slug}`} className="w-full shadow bg-zinc-800 border border-zinc-700 rounded p-2 hover:bg-indigo-300 hover:text-gray-900 text-gray-300" />
+          <Card cardBody={tip.data.title} href={`/c/${kindId}/${tip.slug}`} className="w-full shadow bg-zinc-800 border border-zinc-700 rounded p-2 hover:bg-indigo-300 hover:text-gray-900 text-gray-300" />
         ))}
       </div>
     </div>
