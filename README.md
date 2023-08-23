@@ -10,4 +10,4 @@ We've automated as much as we could to make contributing as easy as possible. If
 
 For those who want to contribute more, we have a few guidelines to follow.
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md)
+See [CONTRIBUTING.md](./.github/CONTRIBUTING.md)
