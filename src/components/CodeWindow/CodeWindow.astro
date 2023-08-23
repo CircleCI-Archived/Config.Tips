@@ -1,4 +1,5 @@
 ---
+import { Tooltips } from 'astro-tooltips';
 // Based on https://github.com/withastro/astro/blob/main/packages/astro/components/Code.astro
 import Icon from "astro-icon";
 import { nanoid } from 'nanoid'
@@ -55,8 +56,10 @@ const html = shiki.renderToHtml(tokens, {
           class="p-1.5 hover:bg-indigo-300"
           aria-label="Copy to clipboard"
           id={`${codeId}-button`}
+          title="Copied!"
         >
           <Icon name="mdi:content-copy" class="w-4 h-4" aria-hidden="true" />
+          <Tooltips interactive={false} delay={[15, 100]} trigger="click" placement='top'/>
         </button>
       </div>
     </div>
