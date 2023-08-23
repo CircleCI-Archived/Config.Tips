@@ -43,7 +43,7 @@ const { configType, title, description, body, snippet, lang, slug } = Astro.prop
       </div>
       <div class="flex flex-col md:w-1/2">
         <CodeWindow snippet={snippet} lang={lang} filePath={configType.snippet.filePath} />
-        <div class="flex flex-col justify-center items-center border border-indigo-300 rounded p-1 mt-2" >
+        <div class="flex flex-col justify-center items-center border border-gray-800 rounded p-1 mt-2" >
           <h2 class="text-md p-0 text-gray-500">Share this tip</h2>
           <SocialBar contentTitle={title} />
         </div>
