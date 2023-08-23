@@ -4,6 +4,7 @@ import {marked} from 'marked';
 import { getCollection } from 'astro:content';
 import Layout from '../../../layouts/Layout.astro';
 import CodeWindow from '../../../components/CodeWindow/CodeWindow.astro';
+import SocialBar from '../../../components/UI/SocialBar.astro';
 
 export async function getStaticPaths() {
   const configKinds = await getCollection("configKinds");
@@ -40,8 +41,12 @@ const { configType, title, description, body, snippet, lang, slug } = Astro.prop
         <h1 class="text-3xl font-bold">{title}</h1>
         <article set:html={body} />
       </div>
-      <div class="flex md:w-1/2">
+      <div class="flex flex-col md:w-1/2">
         <CodeWindow snippet={snippet} lang={lang} filePath={configType.snippet.filePath} />
+        <div class="flex flex-col justify-center items-center border border-indigo-300 rounded p-1 mt-2" >
+          <h2 class="text-md p-0 text-gray-500">Share this tip</h2>
+          <SocialBar contentTitle={title} />
+        </div>
       </div>
     </div>
 </Layout>

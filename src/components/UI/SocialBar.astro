@@ -1,0 +1,63 @@
+---
+import Link from "../Link.astro"
+import { Icon } from "astro-icon";
+
+type Sociallink = {
+  name: string;
+  href: string;
+  icon: string;
+};
+
+interface Props {
+  contentTitle: string;
+}
+const { contentTitle } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const tweetBody = encodeURIComponent(
+  "Check out what the @CircleCI Labs team is working on!"
+);
+
+const socialLinks: Sociallink[] = [
+  {
+    name: "Twitter",
+    href: `https://twitter.com/intent/tweet?text=${tweetBody}&url=${canonicalURL}`,
+    icon: "mdi:twitter",
+  },
+  {
+    name: "LinkedIn",
+    href: `https://www.linkedin.com/sharing/share-offsite/?url=${canonicalURL}`,
+    icon: "mdi:linkedin",
+  },
+  {
+    name: "Email",
+    href: `mailto:?subject=CircleCI Labs - ${contentTitle}&body=${canonicalURL}`,
+    icon: "mdi:email",
+  },
+  {
+    name: "Reddit",
+    href: `https://reddit.com/submit?url=${canonicalURL}&title=${contentTitle}`,
+    icon: "mdi:reddit",
+  },
+  {
+    name: "HackerNews",
+    href: `https://news.ycombinator.com/submitlink?u=${canonicalURL}&t=${contentTitle}`,
+    icon: "mdi:hackernews",
+  },
+];
+---
+
+<ul class="flex flex-row">
+  {
+    socialLinks.map((link) => (
+      <li class="m-0">
+        <Link
+          href={link.href}
+          class="text-gray-500 hover:text-gray-400 transition-colors duration-150"
+          aria-label={`Share to ${link.name}`}
+        >
+          <Icon name={link.icon} class="mx-auto w-4 h-4" />
+        </Link>
+      </li>
+    ))
+  }
+</ul>
