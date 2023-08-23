@@ -5,6 +5,8 @@ import { getCollection } from 'astro:content';
 import Layout from '../../../layouts/Layout.astro';
 import CodeWindow from '../../../components/CodeWindow/CodeWindow.astro';
 import Card from '../../../components/UI/Card.astro';
+import Link from '../../../components/Link.astro';
+import Icon from 'astro-icon';
 
 export async function getStaticPaths() {
     const configKinds = await getCollection("configKinds");
@@ -12,11 +14,11 @@ export async function getStaticPaths() {
     const paths = await Promise.all(configKinds.map(async (configKind) => {
         const allTips = await getCollection("tips");
         const tips = allTips.filter(tip => tip.data.kind.id === configKind.id);
-        const { id: kindId, data: { name, body, description, snippet, logo } } = configKind;
+        const { id: kindId, data: { name, body, description, snippet, logo, website } } = configKind;
         const htmlBody = marked(body);
         return {
             params: { configKind: kindId },
-            props: { name, htmlBody, description, snippet, logo, tips, kindId },
+            props: { name, htmlBody, description, snippet, logo, tips, kindId, website },
         };
     }));
 
@@ -25,7 +27,8 @@ export async function getStaticPaths() {
 
 // Your type and props extraction remain unchanged.
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
-const { name, htmlBody, description, snippet, logo, tips, kindId } = Astro.props;
+const { name, htmlBody, description, snippet, logo, tips, kindId, website } = Astro.props;
+const websiteBase = new URL(website).hostname
 
 ---
 <Layout title={"Config.Tips - " + name} slug="/" description={description}>
@@ -34,6 +37,13 @@ const { name, htmlBody, description, snippet, logo, tips, kindId } = Astro.props
         <div class="flex flex-grow flex-col items-center">
           <img src={logo} alt={name} class="w-24 h-24 invert opacity-90" />
           <h1 class="whitespace-nowrap">{name}</h1>
+          <ul>
+            <li>
+              <Link href={website} className='text-xs flex flex-row items-center hover:text-indigo-300'>
+                <Icon name="mdi:globe" class="w-3 h-3 mr-1" /> <span>{websiteBase}</span>
+              </Link>
+            </li>
+          </ul>
         </div>
         <Fragment set:html={htmlBody} />
       </header>
