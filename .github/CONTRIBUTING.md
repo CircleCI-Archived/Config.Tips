@@ -47,6 +47,7 @@ kind: <kind>
 title: <title>
 description: |
   <between 100 and 160 charachters for SEO>
+contributor: https://github.com/<github username> # optional, delete if not applicable
 snippet: |
   key: value
   # put your tip here
