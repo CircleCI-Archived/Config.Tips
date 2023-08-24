@@ -13,7 +13,7 @@ const {href, icon, cardBody, className} = Astro.props
   <Link href={href} className="flex">
     {icon && 
       <div>
-        <img src={icon} class="w-16 h-16 invert opacity-90" />
+        <img src={icon} class="w-16 h-16 invert opacity-90" alt={cardBody} />
       </div>
     }
     <div class="flex justify-center items-center w-full">
