@@ -1,23 +1,34 @@
 ---
-import type { InferGetStaticPropsType } from 'astro';
-import {marked} from 'marked';
-import { getCollection } from 'astro:content';
-import Layout from '../../../layouts/Layout.astro';
-import CodeWindow from '../../../components/CodeWindow/CodeWindow.astro';
-import SocialBar from '../../../components/UI/SocialBar.astro';
+import type { InferGetStaticPropsType } from "astro";
+import { marked } from "marked";
+import { getCollection } from "astro:content";
+import Layout from "../../../layouts/Layout.astro";
+import CodeWindow from "../../../components/CodeWindow/CodeWindow.astro";
+import SocialBar from "../../../components/UI/SocialBar.astro";
+import Link from "../../../components/Link.astro";
 
 export async function getStaticPaths() {
+  function getContributor(profileURL?: string) {
+    return {
+      url: profileURL || "#",
+      name: profileURL ? profileURL.split("/")[3] : "Anonymous",
+      image: profileURL
+        ? profileURL + ".png"
+        : "/assets/images/gradient_460.png",
+    };
+  }
+
   const configKinds = await getCollection("configKinds");
   const tips = await getCollection("tips");
-  return tips.map(tip => {
-    const configKind = configKinds.find(kind => kind.id === tip.data.kind.id)
+  return tips.map((tip) => {
+    const configKind = configKinds.find((kind) => kind.id === tip.data.kind.id);
     if (!configKind) {
-      throw new Error(`Config kind not found for tip ${tip.id}`)
+      throw new Error(`Config kind not found for tip ${tip.id}`);
     }
     return {
       params: {
         configKind: configKind.id,
-        tip: tip.slug
+        tip: tip.slug,
       },
       props: {
         configType: configKind.data,
@@ -27,26 +38,56 @@ export async function getStaticPaths() {
         snippet: tip.data.snippet,
         lang: configKind.data.snippet.lang,
         slug: tip.slug,
-      }
-    }
-  })
+        contributor: getContributor(tip.data.contributor),
+      },
+    };
+  });
 }
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
-const { configType, title, description, body, snippet, lang, slug } = Astro.props;
+const {
+  configType,
+  title,
+  description,
+  body,
+  snippet,
+  lang,
+  slug,
+  contributor,
+} = Astro.props;
 ---
-<Layout title={`Config.Tips - ${configType.name}: ${title}`} slug={slug} description={description}>
-		<div class="flex flex-col flex-wrap md:flex-row gap-4">
-      <div class="flex-1">
-        <h1 class="text-3xl font-bold">{title}</h1>
-        <article set:html={body} />
+
+<Layout
+  title={`Config.Tips - ${configType.name}: ${title}`}
+  slug={slug}
+  description={description}
+>
+  <div class="flex flex-col flex-wrap md:flex-row gap-4">
+    <article class="flex-1">
+      <h1 class="text-3xl font-bold">{title}</h1>
+      <div set:html={body} />
+      <div class="mt-2 text-sm text-gray-500">
+        <h2 class="text-gray-500 font-medium">Contributor:</h2>
+        <figure>
+          <Link href={contributor.url} className="flex flex-row items-center gap-2 hover:text-indigo-300 duration-150">
+            <img src={contributor.image} alt="Contributor profile picture" class="w-8 h-8 rounded-full"/>
+            <figcaption>{contributor.name}</figcaption>
+          </Link>
+        </figure>
       </div>
-      <div class="flex flex-col md:w-1/2">
-        <CodeWindow snippet={snippet} lang={lang} filePath={configType.snippet.filePath} />
-        <div class="flex flex-col justify-center items-center border border-gray-800 rounded p-1 mt-2" >
-          <h2 class="text-md p-0 text-gray-500">Share this tip</h2>
-          <SocialBar contentTitle={title} />
-        </div>
+    </article>
+    <div class="flex flex-col md:w-1/2">
+      <CodeWindow
+        snippet={snippet}
+        lang={lang}
+        filePath={configType.snippet.filePath}
+      />
+      <div
+        class="flex flex-col justify-center items-center border border-gray-800 rounded p-1 mt-2"
+      >
+        <h2 class="text-md p-0 text-gray-500">Share this tip</h2>
+        <SocialBar contentTitle={title} />
       </div>
     </div>
+  </div>
 </Layout>

@@ -120,6 +120,7 @@ const tipCollection = defineCollection({
       .transform((str) => new Date(str))
       .default(() => new Date().toDateString()),
     kind: reference("configKinds"),
+    contributor: z.string().url().startsWith("https://github.com/").optional(),
   }),
 });
 

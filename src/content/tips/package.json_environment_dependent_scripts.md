@@ -2,6 +2,7 @@
 kind: package.json
 title: Conditional NPM scripts based on environment
 description: Run the same command (ex. `npm run start`) and automatically determine which script to run based on the environment variable `NODE_ENV`.
+contributor: https://github.com/KyleTryon
 snippet: |
   {
     "scripts": {
