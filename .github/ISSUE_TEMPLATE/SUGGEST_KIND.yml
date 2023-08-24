@@ -1,0 +1,163 @@
+name: 📚 Suggest Config Kind
+description: Suggest adding a new type of config
+title: "[New Kind]: "
+labels: ["kind", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting a new kind of config! Please fill out the following information to help us quickly review your suggestion.
+  - type: input
+    id: kind
+    attributes:
+      label: What is the name of the config kind?
+      description: Write the name as it would be presented to the user.
+      placeholder: ex. package.json
+    validations:
+      required: false
+  - type: input
+    id: icon
+    attributes:
+      label: Select an icon
+      description: What icon should we use to display this config kind? Share the name as shown on https://simpleicons.org/
+      placeholder: ex. Kubernetes
+    validations:
+      required: false
+  - type: dropdown
+    id: language
+    attributes:
+      label: What language is the config written in?
+      multiple: false
+      options:
+        - apache
+        - ara
+        - beancount
+        - bibtex
+        - blade
+        - cdc
+        - cmake
+        - codeql
+        - ql
+        - cue
+        - cypher
+        - cql
+        - dax
+        - diff
+        - docker
+        - dockerfile
+        - git-commit
+        - git-rebase
+        - glimmer-js
+        - glimmer-ts
+        - gts
+        - hcl
+        - hjson
+        - http
+        - imba
+        - ini
+        - properties
+        - jinja-html
+        - json
+        - json5
+        - jsonc
+        - jsonl
+        - jsonnet
+        - jssm
+        - fsl
+        - latex
+        - less
+        - liquid
+        - make
+        - makefile
+        - markdown
+        - md
+        - mermaid
+        - narrat
+        - nar
+        - nginx
+        - postcss
+        - powerquery
+        - prisma
+        - proto
+        - pug
+        - jade
+        - puppet
+        - reg
+        - rel
+        - rst
+        - sass
+        - scss
+        - shaderlab
+        - shader
+        - shellscript
+        - bash
+        - console
+        - sh
+        - shell
+        - zsh
+        - ssh-config
+        - stylus
+        - styl
+        - system-verilog
+        - tex
+        - toml
+        - tsx
+        - turtle
+        - twig
+        - v
+        - cmd
+        - viml
+        - vim
+        - vimscript
+        - vue-html
+        - wgsl
+        - xml
+        - xsl
+        - yaml
+        - yml
+        - zenscript
+  - type: textarea
+    id: snippet
+    attributes:
+      label: Sample Config
+      description: Provide the most basic version of a sample config.
+      placeholder: |
+        {
+          "name": "my-package",
+          "version": "1.0.0",
+          "description": "My package",
+          "main": "index.js",
+          "scripts": {
+            "test": "echo \"Error: no test specified\" && exit 1"
+          },
+          "keywords": [],
+          "author": "",
+          "license": "ISC"
+        }
+    validations:
+      required: false
+  - type: input
+    id: description
+    attributes:
+      label: Give us a short description of the config kind
+      description: Keept the description between 100 and 160 characters
+      placeholder: ex. CircleCI continuous integration and change validation platform used to implement DevOps practices. Test, build, and deploy your code on every commit.
+    validations:
+      required: false
+  - type: textarea
+    id: body-text
+    attributes:
+      label: Body Area
+      description: Provide some body copy for the config kind.
+      placeholder: |
+        CircleCI is a continuous integration and change validation plaform for DevOps practices. Use CircleCI to automate testing on every commit and orchestrate deployments.
+    validations:
+      required: false
+  - type: textarea
+    id: more
+    attributes:
+      label: Anything Else?
+      description: Is there anything else we should know about this config kind?
+      placeholder: More details...
+    validations:
+      required: false
