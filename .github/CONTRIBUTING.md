@@ -12,7 +12,7 @@ Both _tips_, and the _config kinds_ they are associated with, exist as structure
 touch src/content/configKinds/awesome-config.yaml
 ```
 
-**2.** Locate an SVG logo for the config type or language. All logos are stored in `src/assets/images/logos`. To find a suitable logo, please use https://simpleicons.org/
+**2.** Locate an SVG logo for the config type or language. All logos are stored in `public/assets/images/logos`. To find a suitable logo, please use https://simpleicons.org/
 
 **3.** Add the required metadata to the file. The following fields are required:
 
