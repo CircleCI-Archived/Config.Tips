@@ -74,8 +74,16 @@ const {
 		@apply leading-7
 	}
 
-	p>code {
+	p code {
 		@apply bg-zinc-800 border border-indigo-300 text-zinc-50 rounded-sm p-[0.2em];
+	}
+
+	article p {
+  @apply py-2
+}
+
+	article pre {
+		@apply bg-gray-800 p-2 rounded-md overflow-x-auto
 	}
 
 	.gradient-text {
