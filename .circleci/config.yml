@@ -1,0 +1,50 @@
+version: 2.1
+
+parameters:
+  cache-version:
+    type: string
+    default: v1
+
+executors:
+  node:
+    docker:
+      - image: cimg/node:20.5
+
+commands:
+  install-pnpm:
+    description: Install pnpm
+    steps:
+      - run: sudo npm install -g pnpm
+  install-deps:
+    description: Install dependencies
+    steps:
+      - restore_cache:
+          keys:
+            - <<pipeline.parameters.cache-version>>-{{ .Branch }}-{{ checksum "package.json" }}
+            - <<pipeline.parameters.cache-version>>-{{ .Branch }}
+      - run: pnpm install
+      - save_cache:
+          key: <<pipeline.parameters.cache-version>>-{{ .Branch }}-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+  ci-scripts:
+    description: Build and test the project
+    steps:
+      - checkout
+      - install-pnpm
+      - install-deps
+      - run: pnpm run test
+      - run: pnpm run format:ci
+      - run: pnpm run build
+
+
+jobs:
+  test:
+    executor: node
+    steps:
+      - ci-scripts
+
+workflows:
+  test:
+    jobs:
+      - test
