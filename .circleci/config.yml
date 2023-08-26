@@ -37,7 +37,6 @@ commands:
       - run: pnpm run format:ci
       - run: pnpm run build
 
-
 jobs:
   test:
     executor: node

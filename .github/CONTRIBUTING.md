@@ -29,11 +29,9 @@ snippet:
   filePath: "<path>"
   code: |
     # Put a default or basic file example here
-
 ```
 
 Utilize the existing config types as reference for adding your new config type. If you have any questions or require assistance, please reach out to us on open an issue on GitHub.
-
 
 ## Create a new Tip
 
@@ -52,6 +50,5 @@ snippet: |
   key: value
   # put your tip here
 ---
-
 <!-- Body - this area supports markdown -->
 ```
