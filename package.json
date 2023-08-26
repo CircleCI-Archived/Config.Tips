@@ -5,12 +5,13 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "vitest run && astro build",
+    "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
     "format": "prettier --write .",
     "format:ci": "prettier --check .",
-    "test": "vitest run"
+    "test": "vitest run",
+    "ci": "prettier --check . && vitest run && astro build"
   },
   "dependencies": {
     "@astrojs/tailwind": "^4.0.0",
@@ -29,5 +30,9 @@
     "prettier": "^3.0.2",
     "prettier-plugin-astro": "^0.11.1",
     "shiki": "^0.14.3"
+  },
+  "engines": {
+    "node": ">=20",
+    "pnpm": ">=8.5"
   }
 }
