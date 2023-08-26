@@ -47,15 +47,25 @@ const topConfigKinds = getTopConfigKinds(6);
         developer configs.
       </p>
       <p class="text-xs py-1 text-gray-400">
-        Made by <Link href="https://continuouslabs.circleci.com/">ContinuousLabs</Link> with ♥, from <Link href="https://circleci.com/">CircleCI</Link>.
+        Made by <Link href="https://continuouslabs.circleci.com/">
+          ContinuousLabs
+        </Link> with ♥, from <Link href="https://circleci.com/">
+          CircleCI
+        </Link>.
       </p>
       <div class="flex flex-row py-2 gap-2">
-        <Link href="github.com" class="text-indigo-300 px-2 py-1 rounded border border-indigo-300">
-        Submit a tip
-      </Link>
-      <Link href="github.com" class="text-pink-200 px-2 py-1 rounded border border-pink-200">
-        Explore
-      </Link>
+        <Link
+          href="github.com"
+          class="text-indigo-300 px-2 py-1 rounded border border-indigo-300"
+        >
+          Submit a tip
+        </Link>
+        <Link
+          href="github.com"
+          class="text-pink-200 px-2 py-1 rounded border border-pink-200"
+        >
+          Explore
+        </Link>
       </div>
     </section>
     <section>
@@ -70,11 +80,20 @@ const topConfigKinds = getTopConfigKinds(6);
         class="border-2 border-indigo-300 bg-gray-950 w-full rounded-md p-2"
       />
     </form>
-    <div class="my-4 grid grid-cols-1 md:grid-cols-2 gap-4">
-      {topConfigKinds.map((configKind) => (
-        <Card href={`/c/${configKind.id}/`} cardBody={configKind.data.name} icon={configKind.data.logo} className="w-full shadow bg-zinc-800 border border-zinc-700 rounded p-2 hover:bg-indigo-300 hover:text-gray-900 text-gray-300" />
-      ))
-      }
+    <div>
+      <h2 class="text-xl font-bold text-gray-500">Popular</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {
+          topConfigKinds.map((configKind) => (
+            <Card
+              href={`/c/${configKind.id}/`}
+              cardBody={configKind.data.name}
+              icon={configKind.data.logo}
+              className="w-full shadow bg-zinc-800 border border-zinc-700 rounded p-2 hover:bg-indigo-300 hover:text-gray-900 text-gray-300"
+            />
+          ))
+        }
+      </div>
     </div>
   </section>
 </Layout>
