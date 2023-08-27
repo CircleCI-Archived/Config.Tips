@@ -1,110 +1,122 @@
---- 
-import HeadBase from '../components/Head/HeadBase.astro';
-import NavBar from '../components/Navigation/NavBar.astro';
+---
+import HeadBase from "../components/Head/HeadBase.astro";
+import FooterArea from "../components/Navigation/FooterArea.astro";
+import NavBar from "../components/Navigation/NavBar.astro";
 
 // Supports weights 100-900
-import '@fontsource-variable/inter';
+import "@fontsource-variable/inter";
 interface Props {
-	title: string;
-	slug: string;
-	description?: string
+  title: string;
+  slug: string;
+  description?: string;
 }
 
-const { 
-	title = "Config.Tips",
-	description = "Simple sharable config tips for developers.",
-	slug } = Astro.props;
+const {
+  title = "Config.Tips",
+  description = "Simple sharable config tips for developers.",
+  slug,
+} = Astro.props;
 ---
 
 <!DOCTYPE html>
 <html lang="en">
-	<HeadBase title={title} slug={new URL(slug, Astro.site).pathname} description={description} />
-	<body class="flex flex-col">
-		<NavBar />
-		<main class="px-4 md:px-12 mx-auto">
-			<slot />
-		</main>
-	</body>
+  <HeadBase
+    title={title}
+    slug={new URL(slug, Astro.site).pathname}
+    description={description}
+  />
+  <body class="flex flex-col">
+    <NavBar />
+    <main class="px-4 md:px-12 mx-auto w-full lg:max-w-screen-xl">
+      <slot />
+    </main>
+    <FooterArea className="px-4 md:px-12 mx-auto w-full lg:max-w-screen-xl" />
+  </body><style is:global>
+    *,
+    *:before,
+    *:after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html,
+    body {
+      box-sizing: border-box;
+      min-height: 100vh;
+      height: 100%;
+      font-family: "Inter Variable", sans-serif;
+    }
+
+    body {
+      @apply bg-zinc-900 text-zinc-50;
+    }
+    *::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+
+    *::-webkit-scrollbar-track {
+      @apply bg-gray-950 rounded-full; /* Or your desired color using Tailwind classes */
+    }
+
+    *::-webkit-scrollbar-thumb {
+      @apply bg-gray-700 rounded-full;
+      /* Rounded and color using Tailwind utilities */
+    }
+
+    *::-webkit-scrollbar-thumb:hover {
+      @apply bg-indigo-300;
+    }
+
+    /* Global Scrollbar Styles for Firefox */
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: #4b5563 #1f2937;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      @apply py-2 text-white font-bold;
+    }
+
+    p {
+      @apply leading-7;
+    }
+
+    p code {
+      @apply bg-zinc-800 border border-indigo-300 text-zinc-50 rounded-sm p-[0.2em] whitespace-nowrap;
+    }
+
+    article p {
+      @apply py-2;
+    }
+
+    article pre {
+      @apply bg-gray-800 p-2 rounded-md overflow-x-auto;
+    }
+
+    .gradient-text {
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .gradient-hover {
+      @apply relative;
+    }
+    .gradient-hover::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      @apply bg-gradient-to-r from-amber-500 to-pink-500 rounded-md animate-blurIn;
+    }
+    .gradient-hover:hover::after {
+      @apply blur-sm animate-blurOut;
+    }
+  </style>
 </html>
-<style is:global>
-	*, *:before, *:after {
-		margin: 0;
-    padding: 0;
-		box-sizing: border-box;
-	}
-	html, body {
-		box-sizing: border-box;
-    min-height: 100vh;
-		height: 100%;
-		font-family: 'Inter Variable', sans-serif;
-	}
-
-	body {
-		@apply bg-zinc-900 text-zinc-50;
-	}
-	*::-webkit-scrollbar {
-			width: 10px;
-			height: 10px;
-	}
-
-	*::-webkit-scrollbar-track {
-			@apply bg-gray-950 rounded-full; /* Or your desired color using Tailwind classes */
-	}
-
-	*::-webkit-scrollbar-thumb {
-			@apply bg-gray-700 rounded-full; 
-			/* Rounded and color using Tailwind utilities */
-	}
-
-	*::-webkit-scrollbar-thumb:hover {
-			@apply bg-indigo-300;
-	}
-
-	/* Global Scrollbar Styles for Firefox */
-	* {
-			scrollbar-width: thin;
-			scrollbar-color: #4B5563 #1F2937;
-	}
-	
-	h1, h2, h3, h4, h5, h6 {
-		@apply py-2 text-white font-bold;
-	}
-
-	p {
-		@apply leading-7
-	}
-
-	p code {
-		@apply bg-zinc-800 border border-indigo-300 text-zinc-50 rounded-sm p-[0.2em] whitespace-nowrap;
-	}
-
-	article p {
-  @apply py-2
-}
-
-	article pre {
-		@apply bg-gray-800 p-2 rounded-md overflow-x-auto
-	}
-
-	.gradient-text {
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-	}
-
-	.gradient-hover {
-    @apply relative;
-  }
-  .gradient-hover::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    @apply bg-gradient-to-r from-amber-500 to-pink-500 rounded-md animate-blurIn;
-  }
-  .gradient-hover:hover::after {
-    @apply blur-sm animate-blurOut
-  }
-
-</style>
-

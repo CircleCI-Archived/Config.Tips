@@ -1,0 +1,96 @@
+---
+type FooterColumns = {
+  title: string;
+  links: {
+    title: string;
+    url: string;
+  }[];
+}[];
+
+const footerColumns: FooterColumns = [
+  {
+    title: "Contribute",
+    links: [
+      {
+        title: "Source",
+        url: "https://github.com/CircleCI-Public/Config.Tips",
+      },
+      {
+        title: "Docs",
+        url: "https://github.com/CircleCI-Public/Config.Tips/blob/main/.github/CONTRIBUTING.md",
+      },
+    ],
+  },
+  {
+    title: "Community",
+    links: [
+      {
+        title: "Discord",
+        url: "https://discord.gg/UWsWB44zYj",
+      },
+      {
+        title: "Twitter",
+        url: "https://twitter.com/CircleCI",
+      },
+      {
+        title: "LinkedIn",
+        url: "https://www.linkedin.com/company/circleci/",
+      },
+    ],
+  },
+  {
+    title: "Legal",
+    links: [
+      {
+        title: "Privacy",
+        url: "https://circleci.com/privacy/",
+      },
+      {
+        title: "Terms of Use",
+        url: "https://circleci.com/terms-of-use/",
+      },
+      {
+        title: "Cookie Policy",
+        url: "https://circleci.com/legal/cookie-policy/",
+      },
+    ],
+  }
+]
+
+const copywrite = `© ${new Date().getFullYear()} Circle Internet Services, Inc.`;
+
+type Props = {
+  className?: string;
+};
+
+const { className } = Astro.props
+---
+
+    <footer>
+      <hr class="border-t border-gray-800 mt-8" />
+      <div class={className}>
+        <div class="flex flex-row gap-8 justify-center mt-2">
+          {footerColumns.map(col => (
+              <div class="flex flex-col">
+                <h3 class="font-semibold mb-2 text-gray-500">{col.title}</h3>
+                <ul>
+                  {col.links.map(link => (
+                      <li class="mb-2">
+                        <a
+                          href={link.url}
+                          class="text-gray-600 hover:text-indigo-300 duration-150"
+                        >
+                          {link.title}
+                        </a>
+                      </li>
+                    )
+                  )}
+                </ul>
+              </div>
+            )
+          )}
+        </div>
+      </div>
+      <div class="text-center text-gray-500 text-sm py-4">{copywrite}</div>
+    </footer>
+ 
