@@ -15,7 +15,7 @@ test("Validate Tip File Names", async () => {
   tipFiles.forEach((filename) => {
     if (!tipIdPattern.test(filename)) {
       errors.push(
-        `Invalid filename: ${filename} :: Use only lowercase letters, numbers, and dashes.`
+        `Invalid filename: ${filename} :: Use only lowercase letters, numbers, and dashes.`,
       );
     }
   });
@@ -26,12 +26,12 @@ test("Validate Tip File Names", async () => {
 test("Validate ConfigKind File Names", async () => {
   const errors: string[] = [];
   console.log(
-    `Attempting to read from: ${path.resolve(contentPath + "configKinds")}`
+    `Attempting to read from: ${path.resolve(contentPath + "configKinds")}`,
   );
   configKindFiles.forEach((filename) => {
     if (!configIdPattern.test(filename)) {
       errors.push(
-        `Invalid filename: ${filename} :: Use only lowercase letters, numbers, and dashes.`
+        `Invalid filename: ${filename} :: Use only lowercase letters, numbers, and dashes.`,
       );
     }
   });
