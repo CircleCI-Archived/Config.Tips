@@ -8,6 +8,20 @@ module.exports = {
       fontFamily: {
         sans: ["InterVariable", "Inter", ...defaultTheme.fontFamily.sans],
       },
+      keyframes: {
+        blurIn: {
+          "0%": { filter: "blur(5px)" },
+          "100%": { filter: "blur(0px)" },
+        },
+        blurOut: {
+          "0%": { filter: "blur(0px)" },
+          "100%": { filter: "blur(5px)" },
+        },
+      },
+      animation: {
+        blurIn: "blurIn 200ms linear forwards",
+        blurOut: "blurOut 200ms linear forwards",
+      },
     },
   },
   plugins: [],

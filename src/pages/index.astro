@@ -56,13 +56,13 @@ const topConfigKinds = getTopConfigKinds(6);
       <div class="flex flex-row py-2 gap-2">
         <Link
           href="github.com"
-          class="text-indigo-300 px-2 py-1 rounded border border-indigo-300"
+          class="text-indigo-300 px-2 py-1 rounded border border-indigo-300 bg-zinc-900 gradient-hover"
         >
           Submit a tip
         </Link>
         <Link
           href="github.com"
-          class="text-pink-200 px-2 py-1 rounded border border-pink-200"
+          class="text-pink-200 px-2 py-1 rounded border border-pink-200 bg-zinc-900 gradient-hover"
         >
           Explore
         </Link>
@@ -97,3 +97,19 @@ const topConfigKinds = getTopConfigKinds(6);
     </div>
   </section>
 </Layout>
+
+<style>
+  .gradient-hover {
+    @apply relative;
+  }
+  .gradient-hover::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    @apply bg-gradient-to-r from-amber-500 to-pink-500 animate-blurIn;
+  }
+  .gradient-hover:hover::after {
+    @apply blur-sm animate-blurOut
+  }
+</style>
