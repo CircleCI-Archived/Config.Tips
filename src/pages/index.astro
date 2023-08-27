@@ -55,21 +55,21 @@ const topConfigKinds = getTopConfigKinds(6);
       </p>
       <div class="flex flex-row py-2 gap-2">
         <Link
-          href="github.com"
-          class="text-indigo-300 px-2 py-1 rounded border border-indigo-300"
+          href="https://github.com/CircleCI-Public/Config.Tips/issues/new?assignees=&labels=tip%2Ctriage&projects=&template=SUGGEST_TIP.yml&title=%5BNew+Tip%5D%3A+"
+          class="text-indigo-300 px-2 py-1 rounded border border-indigo-300 bg-zinc-900 gradient-hover"
         >
           Submit a tip
         </Link>
         <Link
-          href="github.com"
-          class="text-pink-200 px-2 py-1 rounded border border-pink-200"
+          href="/c"
+          class="text-pink-200 px-2 py-1 rounded border border-pink-200 bg-zinc-900 gradient-hover"
         >
           Explore
         </Link>
       </div>
     </section>
     <section>
-      <CodeWindow lang="yaml" snippet={exampleSnippet} filePath="config.tips" />
+      <CodeWindow lang="yaml" snippet={exampleSnippet} filePath="config.tips" className="gradient-hover" />
     </section>
   </header>
   <section>
@@ -89,7 +89,7 @@ const topConfigKinds = getTopConfigKinds(6);
               href={`/c/${configKind.id}/`}
               cardBody={configKind.data.name}
               icon={configKind.data.logo}
-              className="w-full shadow bg-zinc-800 border border-zinc-700 rounded p-2 hover:bg-indigo-300 hover:text-gray-900 text-gray-300"
+              className="w-full shadow bg-zinc-800 border border-zinc-700 rounded p-2 hover:bg-indigo-300 hover:text-gray-900 text-gray-300 duration-300"
             />
           ))
         }
