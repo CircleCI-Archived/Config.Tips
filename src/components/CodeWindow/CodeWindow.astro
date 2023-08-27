@@ -8,8 +8,9 @@ type Props = {
   snippet: string;
   lang: shiki.Lang;
   filePath?: string;
+  className?: string;
 };
-const { snippet, lang, filePath = "unknown" } = Astro.props;
+const { snippet, lang, filePath = "unknown", className } = Astro.props;
 
 const safeSnippet = encodeURIComponent(snippet);
 const codeId = `C${nanoid(5)}`;
@@ -40,7 +41,7 @@ const html = shiki.renderToHtml(tokens, {
 ---
 
 <div
-  class="flex flex-col rounded-md border border-indigo-300 shadow-md w-full"
+  class={`flex flex-col rounded-md border border-indigo-300 shadow-md w-full ${className}`}
   role="region"
   aria-labelledby="filename"
 >
