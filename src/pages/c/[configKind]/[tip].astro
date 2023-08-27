@@ -63,40 +63,52 @@ const {
   slug={slug}
   description={description}
 >
-  <div class="flex flex-col flex-wrap md:flex-row gap-4">
-    <article class="flex-1">
-      <h1 class="text-3xl font-bold">{title}</h1>
-      <div set:html={body} />
-      <footer class="flex flex-col gap-2 mt-2 text-sm text-gray-500">
-        <section>
-          <h2 class="text-gray-500 font-medium">Contributor:</h2>
-          <figure>
-            <Link href={contributor.url} className="flex flex-row items-center gap-2 hover:text-indigo-300 duration-150">
-              <img src={contributor.image} alt="Contributor profile picture" class="w-8 h-8 rounded-full"/>
-              <figcaption>{contributor.name}</figcaption>
-            </Link>
-          </figure>
-        </section>
-        <section>
-          <Link href={`https://github.com/CircleCI-Public/Config.Tips/tree/main/src/content/tips/${slug}.md`} className="text-xs hover:text-indigo-300 duration-150">
-          <Icon name="mdi:edit" class="inline-block w-3 h-3 mr-1" /> edit this page
-          </Link>
-        </section>
-    
-      </footer>
-    </article>
-    <div class="flex flex-col md:w-1/2">
-      <CodeWindow
-        snippet={snippet}
-        lang={lang}
-        filePath={configType.snippet.filePath}
-      />
-      <div
-        class="flex flex-col justify-center items-center border border-gray-800 rounded p-1 mt-2"
-      >
-        <h2 class="text-md p-0 text-gray-500">Share this tip</h2>
-        <SocialBar contentTitle={title} />
-      </div>
+  <article class="flex flex-col flex-wrap gap-4">
+    <div class="flex flex-col md:flex-row gap-4">
+      <section class="flex-1">
+        <h1 class="text-3xl font-bold">{title}</h1>
+        <div set:html={body} />
+      </section>
+      <section class="flex flex-col md:w-1/2">
+        <CodeWindow
+          snippet={snippet}
+          lang={lang}
+          filePath={configType.snippet.filePath}
+        />
+        <div
+          class="flex flex-col justify-center items-center border border-gray-800 rounded p-1 mt-2"
+        >
+          <h2 class="text-md p-0 text-gray-500">Share this tip</h2>
+          <SocialBar contentTitle={title} />
+        </div>
+      </section>
     </div>
-  </div>
+    <footer class="flex flex-col gap-2 mt-2 text-sm text-gray-500">
+      <section>
+        <h2 class="text-gray-500 font-medium">Contributor:</h2>
+        <figure>
+          <Link
+            href={contributor.url}
+            className="flex flex-row items-center gap-2 hover:text-indigo-300 duration-150"
+          >
+            <img
+              src={contributor.image}
+              alt="Contributor profile picture"
+              class="w-8 h-8 rounded-full"
+            />
+            <figcaption>{contributor.name}</figcaption>
+          </Link>
+        </figure>
+      </section>
+      <section>
+        <Link
+          href={`https://github.com/CircleCI-Public/Config.Tips/tree/main/src/content/tips/${slug}.md`}
+          className="text-xs hover:text-indigo-300 duration-150"
+        >
+          <Icon name="mdi:edit" class="inline-block w-3 h-3 mr-1" /> edit this
+          page
+        </Link>
+      </section>
+    </footer>
+  </article>
 </Layout>
