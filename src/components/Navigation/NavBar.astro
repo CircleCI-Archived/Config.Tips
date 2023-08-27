@@ -1,27 +1,29 @@
 ---
 import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
 import Link from "../Link.astro";
+const navLinks = [
+  { href: "/about", text: "About" },
+  { href: "https://github.com/CircleCI-Public/Config.Tips", text: "Contribute" },
+  { href: "https://circleci.com/", text: "Continuous Integration" },
+];
+const hoverLinkStyle = "hover:text-indigo-300 transition-colors duration-200";
 ---
 
 <header class="lg:flex p-5 shadow gap-5 mb-2">
   <Astronav>
-    <div class="flex w-full justify-between">
-      <Link href="/" className="font-bold">Config.Tips</Link>
+    <div class="flex w-full justify-between py-4">
+      <Link href="/" className={`font-bold flex items-center ${hoverLinkStyle}`}>Config.Tips</Link>
       <div class="block lg:hidden">
         <MenuIcon class="w-4 h-4 text-zinc-800" />
       </div>
     </div>
     <MenuItems class="hidden lg:flex">
-      <ul class="flex flex-col lg:flex-row lg:gap-5">
-        <li>
-          <Link href="/about">About</Link>
+      <ul class="flex flex-col lg:flex-row gap-y-4 gap-x-4">
+       {navLinks.map(link => (
+        <li class="flex items-center">
+          <Link href={link.href} className={hoverLinkStyle}>{link.text}</Link>
         </li>
-        <li>
-          <Link href="https://github.com/CircleCI-Public">Contribute</Link>
-        </li>
-        <li>
-          <Link href="https://circleci.com/">Continuous Integration</Link>
-        </li>
+        ))}
       </ul>
     </MenuItems>
   </Astronav>
