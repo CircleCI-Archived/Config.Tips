@@ -3,9 +3,10 @@ import fs from "fs";
 import path from "path";
 
 const contentPath = "src/content/";
+// This sets the URL pattern by enforcing filenames.
+const idPattern = /^(?!.*--)[a-z0-9](?:[a-z0-9-]{3,}[a-z0-9])+\.md$/;
 
 test("Validate Tip File Names", async () => {
-  const idPattern = /^[a-z0-9_]*\.md$/;
   const errors: string[] = [];
   console.log(`Attempting to read from: ${path.resolve(contentPath + "tips")}`);
   const filenames = fs.readdirSync(contentPath + "tips");
