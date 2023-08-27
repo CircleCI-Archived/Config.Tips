@@ -9,7 +9,7 @@ const navLinks = [
 const hoverLinkStyle = "hover:text-indigo-300 transition-colors duration-200";
 ---
 
-<header class="lg:flex p-5 shadow gap-5 mb-2">
+<header class="lg:flex px-5 shadow gap-5 mb-2">
   <Astronav>
     <div class="flex w-full justify-between py-4">
       <Link href="/" className={`font-bold flex items-center ${hoverLinkStyle}`}>Config.Tips</Link>
@@ -18,9 +18,9 @@ const hoverLinkStyle = "hover:text-indigo-300 transition-colors duration-200";
       </div>
     </div>
     <MenuItems class="hidden lg:flex">
-      <ul class="flex flex-col lg:flex-row gap-y-4 gap-x-4">
+      <ul class="flex flex-col lg:flex-row gap-y-4 gap-x-4 mb-2">
        {navLinks.map(link => (
-        <li class="flex items-center">
+        <li class="flex items-center whitespace-nowrap">
           <Link href={link.href} className={hoverLinkStyle}>{link.text}</Link>
         </li>
         ))}
