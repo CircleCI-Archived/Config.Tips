@@ -1,5 +1,5 @@
 ---
-kind: package.json
+kind: package-json
 title: Overriding Dependencies with PNPM Overrides
 description: Learn how to manage dependencies, standardize versions, integrate fixes, and swap stock dependencies with forks using PNPM Overrides.
 contributor: https://github.com/EricRibeiro
