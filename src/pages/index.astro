@@ -97,19 +97,3 @@ const topConfigKinds = getTopConfigKinds(6);
     </div>
   </section>
 </Layout>
-
-<style>
-  .gradient-hover {
-    @apply relative;
-  }
-  .gradient-hover::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    @apply bg-gradient-to-r from-amber-500 to-pink-500 animate-blurIn;
-  }
-  .gradient-hover:hover::after {
-    @apply blur-sm animate-blurOut
-  }
-</style>
