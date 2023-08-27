@@ -46,9 +46,9 @@ const html = shiki.renderToHtml(tokens, {
   aria-labelledby="filename"
 >
   <div
-    class="flex justify-between bg-slate-950 rounded-t-md overflow-x-auto"
+    class="flex justify-between bg-slate-950 rounded-t-md"
   >
-    <span class="p-2 bg-gray-800 rounded-t-sm" id="filename" role="presentation"
+    <span class="p-2 bg-gray-800 rounded-t-md" id="filename" role="presentation"
       >{filePath}</span
     >
     <div class="flex items-center px-2">
@@ -65,7 +65,7 @@ const html = shiki.renderToHtml(tokens, {
       </div>
     </div>
   </div>
-  <div class="overflow-auto w-full h-full bg-gray-800 rounded-b-md">
+  <div class="overflow-auto w-full h-full bg-gray-800 rounded-b-md py-1">
     <Fragment set:html={html} />
   </div>
 </div>
