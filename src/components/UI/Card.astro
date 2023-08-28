@@ -5,12 +5,12 @@ type Props = {
   className?: string;
 }
 const {href, className} = Astro.props
-const baseStyles = "shadow bg-zinc-800 border border-zinc-700 rounded p-2"
+const baseStyles = "shadow bg-zinc-800 border border-zinc-700 rounded"
 const cardStyles = baseStyles + ' ' + (className || '')
 ---
 
 <div class={cardStyles}>
-  <Link href={href} className="flex w-full">
+  <Link href={href} className="flex w-full h-full">
     <slot />
   </Link>
 </div>
