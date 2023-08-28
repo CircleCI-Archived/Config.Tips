@@ -31,7 +31,7 @@ const html = shiki.renderToHtml(tokens, {
       // Swap to `code` tag if inline
       // Replace "shiki" class naming with "astro-code"
       className = className.replace(/shiki/g, "code-window");
-      return `<pre class="${className} px-2 break-words" tabindex="0">${children}</pre>`;
+      return `<pre class="${className}" tabindex="0">${children}</pre>`;
     },
     code({ children }) {
       return `<code id="${codeId}-code" data-rawSnippet="${safeSnippet}">${children}</code>`;
@@ -65,7 +65,7 @@ const html = shiki.renderToHtml(tokens, {
       </div>
     </div>
   </div>
-  <div class="overflow-auto w-full h-full bg-gray-800 rounded-b-md py-1">
+  <div class="overflow-auto w-full h-full bg-gray-800 rounded-b-md">
     <Fragment set:html={html} />
   </div>
 </div>

@@ -55,6 +55,10 @@ const {
       height: 10px;
     }
 
+    ::-webkit-scrollbar-corner {
+      background: transparent;
+    }
+
     *::-webkit-scrollbar-track {
       @apply bg-gray-950 rounded-full; /* Or your desired color using Tailwind classes */
     }
@@ -84,19 +88,15 @@ const {
     }
 
     p {
-      @apply leading-7;
+      @apply leading-7 py-2;
     }
 
-    p code {
-      @apply bg-zinc-800 border border-indigo-300 text-zinc-50 rounded-sm p-[0.2em] whitespace-nowrap;
+    p > code {
+      @apply bg-gray-900 rounded-sm p-0.5 border border-indigo-300 whitespace-nowrap;
     }
 
-    article p {
-      @apply py-2;
-    }
-
-    article pre {
-      @apply bg-gray-800 p-2 rounded-md overflow-x-auto;
+    pre {
+      @apply p-2;
     }
 
     .gradient-text {
