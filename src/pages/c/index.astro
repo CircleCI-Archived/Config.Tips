@@ -1,0 +1,41 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Card from "../../components/UI/Card.astro";
+import Icon from "astro-icon";
+
+const configKinds = await getCollection("configKinds");
+const tips = await getCollection("tips");
+
+const configsWithCount = configKinds.map(configKind =>{
+  return {
+    ...configKind,
+    count: tips.filter(tip => tip.data.kind.id === configKind.id).length
+  }
+})
+
+const pageName = "Explore Configs"
+const pageDescription = "Explore the library of available developer config types. Discover tips and tricks for your favorite tools, or submit your own!"
+---
+
+<Layout title={"Config.Tips - " + pageName} slug="/c" description={pageDescription}>
+  <h1 class="text-2xl font-bold mb-4">Explore Configs</h1>
+  <div class="flex flex-row flex-wrap justify-center gap-4">
+  {
+    configsWithCount.map(configKind => (
+      <Card href={`/c/${configKind.id}`} className="w-72 gradient-hover">
+        <div class="flex flex-col w-full h-full justify-between items-center">
+          <div class="flex flex-col items-center p-2">
+            <img src={configKind.data.logo} alt={configKind.data.name} class="w-12 h-12 invert opacity-80 my-2" />
+            <h2 class="font-semibold p-0">{configKind.data.name}</h2>
+            <p class="text-xs text-center p-2">{configKind.data.description}</p>
+          </div>
+          <footer class=" justify-self-end w-full bg-zinc-900 rounded-b-md mt-2 py-1 px-2 text-xs text-gray-500">
+            <Icon name="mdi:file-multiple" class="inline-block w-4 h-4 mr-1" /> <span>{configKind.count}</span>
+          </footer>
+        </div>
+      </Card>
+    ))
+  }
+  </div>
+</Layout>
