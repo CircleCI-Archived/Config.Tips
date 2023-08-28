@@ -51,7 +51,9 @@ const websiteBase = new URL(website).hostname
       <h2 class="text-xl font-bold text-gray-500 p-0">Tips</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         {tips.map(tip => (
-          <Card cardBody={tip.data.title} href={`/c/${kindId}/${tip.slug}`} className="w-full shadow bg-zinc-800 border border-zinc-700 rounded p-2 hover:bg-indigo-300 hover:text-gray-900 text-gray-300" />
+          <Card href={`/c/${kindId}/${tip.slug}`} className="w-full shadow bg-zinc-800 border border-zinc-700 rounded p-2 hover:bg-indigo-300 text-gray-300 hover:text-gray-900 durarion-200">
+            <h2 class="font-semibold ">{tip.data.title}</h2>
+          </Card>
         ))}
       </div>
     </div>

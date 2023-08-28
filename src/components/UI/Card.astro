@@ -2,22 +2,15 @@
 import Link from "../Link.astro";
 type Props = {
   href: string;
-  icon?: string;
-  cardBody: string;
   className?: string;
 }
-const {href, icon, cardBody, className} = Astro.props
+const {href, className} = Astro.props
+const baseStyles = "shadow bg-zinc-800 border border-zinc-700 rounded p-2"
+const cardStyles = baseStyles + ' ' + (className || '')
 ---
 
-<div class={className || ""}>
-  <Link href={href} className="flex">
-    {icon && 
-      <div>
-        <img src={icon} class="w-16 h-16 invert opacity-90" alt={cardBody} />
-      </div>
-    }
-    <div class="flex justify-center items-center w-full">
-      <h2 class="text-xl font-semibold text-inherit duration-75">{cardBody}</h2>
-    </div>
+<div class={cardStyles}>
+  <Link href={href} className="flex w-full">
+    <slot />
   </Link>
 </div>
