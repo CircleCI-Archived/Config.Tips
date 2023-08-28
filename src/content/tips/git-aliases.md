@@ -20,9 +20,9 @@ Aliases become especially useful when running with many arguments or multiple co
 $ git hist
 
 *   f790b78 2023-08-27 | feat: add footer #13 [KyleTryon]
-|\  
+|\
 | * 11d2d75 2023-08-27 | feat: implement new footer (origin/add-footer, add-footer) [KyleTryon]
 | * 091d895 2023-08-27 | feat: add footer component [KyleTryon]
-|/  
+|/
 *   e45725d 2023-08-27 | fix: minor style fixes #12 [KyleTryon]
 ```
