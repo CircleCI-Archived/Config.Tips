@@ -19,6 +19,14 @@ export async function getStaticPaths() {
     };
   }
 
+  function renderMarkdown(markdown: string) {
+    const renderer = new marked.Renderer();
+    renderer.code = (code, lang) => {
+      return `<div class="rounded-md px-2 bg-gray-800 w-full overflow-x-auto"><pre><code class="language-${lang}">${code}</code></pre></div>`;
+    };
+    return marked(markdown, { renderer });
+  }
+
   const configKinds = await getCollection("configKinds");
   const tips = await getCollection("tips");
   return tips.map((tip) => {
@@ -35,7 +43,7 @@ export async function getStaticPaths() {
         configType: configKind.data,
         title: tip.data.title,
         description: tip.data.description,
-        body: marked(tip.body),
+        body: renderMarkdown(tip.body),
         snippet: tip.data.snippet,
         lang: configKind.data.snippet.lang,
         slug: tip.slug,
@@ -63,13 +71,13 @@ const {
   slug={slug}
   description={description}
 >
-  <article class="flex flex-col flex-wrap gap-4">
-    <div class="flex flex-col md:flex-row gap-4">
-      <section class="flex-1">
+  <article class="flex flex-col">
+    <div class="flex flex-col md:flex-row flex-wrap gap-4">
+      <section class="flex-1 min-w-0 w-full md:w-1/2">
         <h1 class="text-3xl font-bold">{title}</h1>
         <div set:html={body} />
       </section>
-      <section class="flex flex-col md:w-1/2">
+      <section class="flex flex-col flex-1 w-full min-w-0 md:w-1/2">
         <CodeWindow
           snippet={snippet}
           lang={lang}
