@@ -7,6 +7,7 @@ import CodeWindow from "../../../components/CodeWindow/CodeWindow.astro";
 import SocialBar from "../../../components/UI/SocialBar.astro";
 import Link from "../../../components/Link.astro";
 import Icon from "astro-icon";
+import BreadCrumb, { BreadCrumbList } from "../../../components/Navigation/BreadCrumb.astro";
 
 export async function getStaticPaths() {
   function getContributor(profileURL?: string) {
@@ -67,6 +68,17 @@ const {
   contributor,
 } = Astro.props;
 
+const breadCrumbList: BreadCrumbList = [
+  {
+    title: "Configs",
+    href: "/c/",
+  },
+  {
+    title: configKind.data.name,
+    href: `/${configKind.id}`,
+  }
+]
+
 ---
 
 <Layout
@@ -74,6 +86,7 @@ const {
   slug={`${configKind.id}/${slug}`}
   description={description}
 >
+  <BreadCrumb breadCrumbList={breadCrumbList} />
   <article class="flex flex-col">
     <div class="flex flex-col md:flex-row flex-wrap gap-4">
       <section class="flex-1 min-w-0 w-full md:w-1/2">

@@ -7,6 +7,7 @@ import CodeWindow from '../../../components/CodeWindow/CodeWindow.astro';
 import Card from '../../../components/UI/Card.astro';
 import Link from '../../../components/Link.astro';
 import Icon from 'astro-icon';
+import BreadCrumb, { BreadCrumbList } from '../../../components/Navigation/BreadCrumb.astro';
 
 export async function getStaticPaths() {
     const configKinds = await getCollection("configKinds");
@@ -28,8 +29,16 @@ export async function getStaticPaths() {
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 const { configKind, htmlBody, tips } = Astro.props;
 const websiteBase = new URL(configKind.data.website).hostname
+
+const breadCrumbList: BreadCrumbList = [
+  {
+    title: "Configs",
+    href: "/c/",
+  },
+]
 ---
 <Layout title={"Config.Tips - " + configKind.data.name} slug={`/c/${configKind.id}`} description={configKind.data.description}>
+    <BreadCrumb breadCrumbList={breadCrumbList} />
 		<div class="flex flex-col gap-4 w-full">
       <header class="flex flex-row gap-6">
         <div class="flex flex-grow flex-col items-center">

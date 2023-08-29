@@ -1,0 +1,33 @@
+---
+import Link from '../Link.astro';
+
+export type BreadCrumbList = {
+  title: string,
+  href: string
+}[]
+
+interface Props {
+  breadCrumbList?: BreadCrumbList
+  delimiter?: string
+}
+
+const { breadCrumbList, delimiter = "›" } = Astro.props;
+const list = breadCrumbList || [];
+list.unshift({
+  title: "Home",
+  href: "/"
+})
+---
+
+<nav aria-label="breadcrumb">
+  <ol class="flex flex-row text-sm gap-2 text-gray-500 m-2">
+    {
+      list.map((item, index) => (
+        <li class="flex flex-row items-center py-1 gap-2">
+          <Link href={item.href} className="hover:text-indigo-300 duration-200">{item.title}</Link>
+          {index < list.length - 1 && <span class="">{delimiter}</span>}
+        </li>
+      ))
+    }
+  </ol>
+</nav>
