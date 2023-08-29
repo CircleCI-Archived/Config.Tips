@@ -14,11 +14,10 @@ export async function getStaticPaths() {
     const paths = await Promise.all(configKinds.map(async (configKind) => {
         const allTips = await getCollection("tips");
         const tips = allTips.filter(tip => tip.data.kind.id === configKind.id);
-        const { id: kindId, data: { name, body, description, snippet, logo, website } } = configKind;
-        const htmlBody = marked(body);
+        const htmlBody = marked(configKind.data.body);
         return {
-            params: { configKind: kindId },
-            props: { name, htmlBody, description, snippet, logo, tips, kindId, website, slug: `/c/${kindId}` },
+            params: { configKind: configKind.id },
+            props: { configKind, tips, htmlBody },
         };
     }));
 
@@ -27,18 +26,18 @@ export async function getStaticPaths() {
 
 // Your type and props extraction remain unchanged.
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
-const { name, htmlBody, description, snippet, logo, tips, kindId, website, slug } = Astro.props;
-const websiteBase = new URL(website).hostname
+const { configKind, htmlBody, tips } = Astro.props;
+const websiteBase = new URL(configKind.data.website).hostname
 ---
-<Layout title={"Config.Tips - " + name} slug={slug} description={description}>
+<Layout title={"Config.Tips - " + configKind.data.name} slug={`/c/${configKind.id}`} description={configKind.data.description}>
 		<div class="flex flex-col gap-4 w-full">
       <header class="flex flex-row gap-6">
         <div class="flex flex-grow flex-col items-center">
-          <img src={logo} alt={name} class="w-24 h-24 invert opacity-90" />
-          <h1 class="whitespace-nowrap">{name}</h1>
+          <img src={configKind.data.logo} alt={configKind.data.name} class="w-24 h-24 invert opacity-90" />
+          <h1 class="whitespace-nowrap">{configKind.data.name}</h1>
           <ul>
             <li>
-              <Link href={website} className='text-xs flex flex-row items-center hover:text-indigo-300'>
+              <Link href={configKind.data.website} className='text-xs flex flex-row items-center hover:text-indigo-300'>
                 <Icon name="mdi:globe" class="w-3 h-3 mr-1" /> <span>{websiteBase}</span>
               </Link>
             </li>
@@ -46,11 +45,11 @@ const websiteBase = new URL(website).hostname
         </div>
         <Fragment set:html={htmlBody} />
       </header>
-      <CodeWindow snippet={snippet.code} lang={snippet.lang} filePath={snippet.filePath} />
+      <CodeWindow snippet={configKind.data.snippet.code} lang={configKind.data.snippet.lang} filePath={configKind.data.snippet.filePath} />
       <h2 class="text-xl font-bold text-gray-500 p-0">Tips</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         {tips.map(tip => (
-          <Card href={`/c/${kindId}/${tip.slug}`} className="w-full shadow bg-zinc-800 border border-zinc-700 rounded p-2 hover:bg-indigo-300 text-gray-300 hover:text-gray-900 durarion-200">
+          <Card href={`/c/${configKind.id}/${tip.slug}`} className="w-full shadow bg-zinc-800 border border-zinc-700 rounded p-2 hover:bg-indigo-300 text-gray-300 hover:text-gray-900 durarion-200">
             <h2 class="font-semibold ">{tip.data.title}</h2>
           </Card>
         ))}

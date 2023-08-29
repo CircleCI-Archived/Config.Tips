@@ -46,7 +46,8 @@ export async function getStaticPaths() {
         body: renderMarkdown(tip.body),
         snippet: tip.data.snippet,
         lang: configKind.data.snippet.lang,
-        slug: `${configKind.id}/${tip.slug}`,
+        slug: tip.slug,
+        configKind,
         contributor: getContributor(tip.data.contributor),
       },
     };
@@ -62,6 +63,7 @@ const {
   snippet,
   lang,
   slug,
+  configKind,
   contributor,
 } = Astro.props;
 
@@ -69,7 +71,7 @@ const {
 
 <Layout
   title={`Config.Tips - ${configType.name}: ${title}`}
-  slug={slug}
+  slug={`${configKind.id}/${slug}`}
   description={description}
 >
   <article class="flex flex-col">
