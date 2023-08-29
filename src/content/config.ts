@@ -76,6 +76,8 @@ export const Lang = z.union([
   z.literal("system-verilog"),
   z.literal("tex"),
   z.literal("toml"),
+  z.literal("ts"),
+  z.literal("typescript"),
   z.literal("tsx"),
   z.literal("turtle"),
   z.literal("twig"),
