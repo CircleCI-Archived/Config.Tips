@@ -7,10 +7,10 @@ ogImage?: string;
 slug: string
 }
 const { title, description, ogImage, slug} = Astro.props;
-const permalink = Astro.site + slug;
+const permalink = new URL(slug, Astro.site).toString();
 const image = () => {
 	let img = ogImage || '/assets/opengraph/images/default-opengraph.png';
-	return `${Astro.site}/${img}`
+	return new URL(img, Astro.site).toString();
 }
 ---
 <head>

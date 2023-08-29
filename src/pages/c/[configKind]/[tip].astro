@@ -46,7 +46,7 @@ export async function getStaticPaths() {
         body: renderMarkdown(tip.body),
         snippet: tip.data.snippet,
         lang: configKind.data.snippet.lang,
-        slug: tip.slug,
+        slug: `${configKind.id}/${tip.slug}`,
         contributor: getContributor(tip.data.contributor),
       },
     };
@@ -64,6 +64,7 @@ const {
   slug,
   contributor,
 } = Astro.props;
+
 ---
 
 <Layout
