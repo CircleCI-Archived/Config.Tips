@@ -36,11 +36,11 @@ snippet: |
               - build
 ---
 
-In CircleCI, jobs in a workflow are independent of each other and run in separate environments. This means that if you've done some work in one job—like installing dependencies—you'll lose that work when moving to the next job. To make your pipelines more efficient, you can persist data across jobs using the `persist_to_workspace` and `attach_workspace` steps.
+In CircleCI, jobs in a workflow are independent of each other and run in separate environments. This means that if you've done some work in one job (such as installing dependencies), you'll lose that work when moving to the next job. To make your pipelines more efficient, you can persist data across jobs using the `persist_to_workspace` and `attach_workspace` steps.
 
 In the example configuration, we have a `build` job where dependencies are installed, and we want to use those installed dependencies in a subsequent `test` job. Here's how it works:
 
-1. **Persisting Data**: In the `build` job, we use `persist_to_workspace` to persist the `node_modules` directory. This will make `node_modules` available to subsequent jobs.
+1. **Persisting Data**: In the `build` job, use `persist_to_workspace` to persist the `node_modules` directory. This will make `node_modules` available to subsequent jobs.
 
    ```yaml
    - persist_to_workspace:
@@ -49,7 +49,7 @@ In the example configuration, we have a `build` job where dependencies are insta
          - node_modules
    ```
 
-2. **Attaching Workspace**: In the `test` job, we use `attach_workspace` to retrieve the data persisted from the `build` job. We specify `/workspace` as the directory where the persisted data should be attached.
+2. **Attaching Workspace**: In the `test` job, use `attach_workspace` to retrieve the data persisted from the `build` job. We specify `/workspace` as the directory where the persisted data should be attached.
 
    ```yaml
    - attach_workspace:
