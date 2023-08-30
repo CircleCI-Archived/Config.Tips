@@ -11,22 +11,29 @@
     "format": "prettier --write .",
     "format:ci": "prettier --check .",
     "test": "vitest run",
-    "ci": "prettier --check . && vitest run && astro build"
+    "ci": "prettier --check . && vitest run && astro build",
+    "algolia:sync": "rm -rf ./.algolia; tsc -p ./tsconfig.algolia.json && mv ./.algolia/utils/algoliaIndexer.js ./.algolia/utils/algoliaIndexer.mjs && node ./.algolia/utils/algoliaIndexer.mjs"
   },
   "dependencies": {
     "@astrojs/tailwind": "^4.0.0",
     "@fontsource-variable/inter": "^5.0.8",
+    "algoliasearch": "^4.19.1",
     "astro": "^2.10.7",
     "astro-icon": "^0.8.1",
     "astro-navbar": "^2.0.1",
     "astro-tooltips": "^0.6.2",
+    "dotenv": "^16.3.1",
+    "gray-matter": "^4.0.3",
     "marked": "^7.0.3",
     "nanoid": "^4.0.2",
+    "remove-markdown": "^0.5.0",
     "tailwindcss": "^3.0.24",
+    "typescript": "^5.2.2",
     "vitest": "^0.34.2"
   },
   "devDependencies": {
     "@types/node": "^20.5.4",
+    "@types/remove-markdown": "^0.3.1",
     "prettier": "^3.0.2",
     "prettier-plugin-astro": "^0.11.1",
     "shiki": "^0.14.3"
