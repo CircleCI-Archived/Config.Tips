@@ -1,3 +1,4 @@
+---
 name: Git Config
 description: |
   The `.gitconfig` file is a user-specific global configuration for Git and contains settings such as the user's name, email, and preferred diff tool.
