@@ -2,7 +2,7 @@
 kind: circleci
 title: Persisting Data Between Jobs in CircleCI Workflows
 description: Learn how to persist data across jobs in a CircleCI workflow using workspace and caching techniques, enhancing the efficiency of your CI/CD pipelines.
-contributor: https://github.com/YourUsername
+contributor: https://github.com/EricRibeiro
 snippet: |
   version: 2.1
   jobs:
