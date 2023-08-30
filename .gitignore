@@ -3,6 +3,7 @@ dist/
 
 # generated types
 .astro/
+.algolia/
 
 # dependencies
 node_modules/
