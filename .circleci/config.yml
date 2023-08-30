@@ -27,12 +27,15 @@ commands:
           key: <<pipeline.parameters.cache-version>>-{{ .Branch }}-{{ checksum "package.json" }}
           paths:
             - ./node_modules
-  ci-scripts:
+  node-setup:
     description: Build and test the project
     steps:
       - checkout
       - install-pnpm
       - install-deps
+  build-and-test:
+    description: Build and test the project
+    steps:
       - run: pnpm run test
       - run: pnpm run format:ci
       - run: pnpm run build
@@ -41,7 +44,8 @@ jobs:
   test:
     executor: node
     steps:
-      - ci-scripts
+      - node-setup
+      - build-and-test
 
 workflows:
   test:
