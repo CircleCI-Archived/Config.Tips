@@ -46,8 +46,20 @@ jobs:
     steps:
       - node-setup
       - build-and-test
-
+  indexSearch:
+    executor: node
+    steps:
+      - node-setup
+      - run: pnpm run algolia:sync
 workflows:
   test:
     jobs:
       - test
+  indexSearch:
+    jobs:
+      - indexSearch:
+          filters:
+            branches:
+              only:
+                - main
+          context: configtips_algolia
