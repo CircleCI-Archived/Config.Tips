@@ -1,0 +1,44 @@
+---
+import AutoComplete from './AutoComplete';
+
+---
+<AutoComplete client:only />
+<style is:global>
+
+  :root {
+    --aa-background-color-rgb: 24, 24, 27 !important;
+    --aa-input-background-color-rgb: 24, 24, 27 !important;
+  }
+  .aa-Form {
+    @apply bg-zinc-900 text-white border-indigo-300
+  }
+  .aa-Input {
+    @apply text-white
+  }
+  .aa-PanelLayout {
+    @apply bg-zinc-800 text-gray-200 rounded-md border border-indigo-300
+  }
+
+  .aa-List {
+    @apply flex flex-col
+  }
+  
+  .aa-Item{
+    @apply flex flex-row w-full;
+  }
+
+  .aa-ItemIcon {
+    @apply bg-zinc-900
+  }
+
+  .aa-DetachedCancelButton {
+    @apply text-gray-200 border border-gray-500
+  }
+
+  .aa-ItemContentBody mark {
+    @apply bg-indigo-500 text-white px-1 rounded-sm
+  }
+  .aa-ItemIcon--picture > img {
+    @apply invert opacity-80
+  }
+</style>

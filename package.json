@@ -15,6 +15,9 @@
     "algolia:sync": "rm -rf ./.algolia; tsc -p ./tsconfig.algolia.json && mv ./.algolia/utils/algoliaIndexer.js ./.algolia/utils/algoliaIndexer.mjs && node ./.algolia/utils/algoliaIndexer.mjs"
   },
   "dependencies": {
+    "@algolia/autocomplete-js": "^1.11.0",
+    "@algolia/autocomplete-theme-classic": "^1.11.0",
+    "@algolia/client-search": "^4.19.1",
     "@astrojs/react": "^3.0.0",
     "@astrojs/tailwind": "^5.0.0",
     "@fontsource-variable/inter": "^5.0.8",

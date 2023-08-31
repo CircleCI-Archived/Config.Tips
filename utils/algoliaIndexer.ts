@@ -43,6 +43,7 @@ type TipSchema = {
 
 export type TipData = {
   title: string;
+  id: string;
   description: string;
   snippet: string;
   kind: {
@@ -73,8 +74,10 @@ async function processTips() {
     const { data, content } = matter(fileContent);
     const tipData = data as TipSchema;
     const kindData = await getKindData(data.kind);
+    const tipId = file.replace(".md", "");
     tips.push({
       title: tipData.title,
+      id: tipId,
       description: tipData.description,
       snippet: tipData.snippet,
       kind: {
@@ -85,7 +88,7 @@ async function processTips() {
       },
       contributor: tipData.contributor,
       body: removeMd(content),
-      objectID: `${tipData.kind}-${file.replace(".md", "")}`,
+      objectID: `${tipData.kind}-${tipId}`,
     });
   }
   return tips;
