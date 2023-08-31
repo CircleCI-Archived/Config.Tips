@@ -2,7 +2,7 @@
 kind: circleci
 title: Pull an image from Amazon ECR using OIDC
 description: |
-  Configure a job to pull an image from AWS ECR using OIDC authentication.
+  Configure a job to pull an image from AWS ECR using OIDC authentication. OIDC eliminates the need to store long-lived secrets in CircleCI.
 snippet: |
   version: 2.1
   jobs:
