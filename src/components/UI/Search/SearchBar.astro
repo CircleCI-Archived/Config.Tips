@@ -1,0 +1,18 @@
+---
+import AutoComplete from './AutoComplete';
+const someProps = {
+	count: 0,
+};
+// <form>
+//   <input
+//     id="autocomplete"
+//     type="text"
+//     class="border-2 border-indigo-300 bg-gray-950 w-full rounded-md p-2"
+//   />
+// </form>
+
+---
+
+<AutoComplete {...someProps} client:only>
+  <h1>Hello, React!</h1>
+</AutoComplete>
