@@ -7,7 +7,11 @@ import CodeWindow from "../../../components/CodeWindow/CodeWindow.astro";
 import SocialBar from "../../../components/UI/SocialBar.astro";
 import Link from "../../../components/Link.astro";
 import Icon from "astro-icon";
-import BreadCrumb, { BreadCrumbList } from "../../../components/Navigation/BreadCrumb.astro";
+import BreadCrumb, {
+  BreadCrumbList,
+} from "../../../components/Navigation/BreadCrumb.astro";
+import * as shiki from "shiki";
+import { nanoid } from 'nanoid'
 
 export async function getStaticPaths() {
   function getContributor(profileURL?: string) {
@@ -20,10 +24,33 @@ export async function getStaticPaths() {
     };
   }
 
-  function renderMarkdown(markdown: string) {
+  async function renderMarkdown(markdown: string) {
+    const highlighter = await shiki.getHighlighter({
+      theme: "github-dark-dimmed",
+    });
     const renderer = new marked.Renderer();
     renderer.code = (code, lang) => {
-      return `<div class="rounded-md px-2 bg-gray-800 w-full overflow-x-auto"><pre><code class="language-${lang}">${code}</code></pre></div>`;
+      const codeId = `C${nanoid(5)}`;
+      const safeSnippet = encodeURIComponent(code);
+      const tokens = highlighter.codeToThemedTokens(code, lang);
+      const _theme = highlighter.getTheme();
+      const html = shiki.renderToHtml(tokens, {
+        themeName: _theme.name,
+        fg: _theme.fg,
+        bg: "transparent",
+        elements: {
+          pre({ className, children }) {
+            // Swap to `code` tag if inline
+            // Replace "shiki" class naming with "astro-code"
+            className = className.replace(/shiki/g, "code-window");
+            return `<pre class="${className}" tabindex="0">${children}</pre>`;
+          },
+          code({ children }) {
+            return `<code id="${codeId}-code" data-rawSnippet="${safeSnippet}">${children}</code>`;
+          },
+        },
+      });
+      return `<div class="rounded-md px-2 bg-gray-800 w-full overflow-x-auto"><pre><code class="language-${lang}">${html}</code></pre></div>`;
     };
     return marked(markdown, { renderer });
   }
@@ -76,9 +103,8 @@ const breadCrumbList: BreadCrumbList = [
   {
     title: configKind.data.name,
     href: `/${configKind.id}`,
-  }
-]
-
+  },
+];
 ---
 
 <Layout
