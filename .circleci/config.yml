@@ -27,12 +27,15 @@ commands:
           key: <<pipeline.parameters.cache-version>>-{{ .Branch }}-{{ checksum "package.json" }}
           paths:
             - ./node_modules
-  ci-scripts:
+  node-setup:
     description: Build and test the project
     steps:
       - checkout
       - install-pnpm
       - install-deps
+  build-and-test:
+    description: Build and test the project
+    steps:
       - run: pnpm run test
       - run: pnpm run format:ci
       - run: pnpm run build
@@ -41,9 +44,22 @@ jobs:
   test:
     executor: node
     steps:
-      - ci-scripts
-
+      - node-setup
+      - build-and-test
+  indexSearch:
+    executor: node
+    steps:
+      - node-setup
+      - run: pnpm run algolia:sync
 workflows:
   test:
     jobs:
       - test
+  indexSearch:
+    jobs:
+      - indexSearch:
+          filters:
+            branches:
+              only:
+                - main
+          context: configtips_algolia

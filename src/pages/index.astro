@@ -4,6 +4,7 @@ import CodeWindow from "../components/CodeWindow/CodeWindow.astro";
 import Link from "../components/Link.astro";
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/UI/Card.astro";
+import SearchBar from "../components/UI/Search/SearchBar.astro";
 
 const exampleSnippet = `
 # Your favorite developer configs
@@ -80,13 +81,7 @@ const topConfigKinds = getTopConfigKinds(6);
       </section>
     </header>
     <section>
-      <form>
-        <input
-          type="text"
-          placeholder="Search for a tip (ex: 'package.json' or 'circleci test splitting')"
-          class="border-2 border-indigo-300 bg-gray-950 w-full rounded-md p-2"
-        />
-      </form>
+    <SearchBar />
       <div>
         <h2 class="text-xl font-bold text-gray-500">Popular</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">

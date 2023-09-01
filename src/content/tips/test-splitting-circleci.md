@@ -30,10 +30,10 @@ In the example configuration, we have a `test` job the tests are run, and the jo
 1. **Setting parallelism**: In the `test` job, use `parallelism` key spin up multiple jobs at the same time. This will allow you to run a subset of tests in each. In our case, we are setting `parallelism` to 4, to start 4 jobs simultaneously.
 
    ```yaml
-   parallelism: 4      
+   parallelism: 4
    ```
 
-2. **Modifying the run command to use circleci test split**: In the `test` job's step that run tests, use `circleci tests glob` to select all test files, and pass that to `circleci tests split` to grab a subset of tests for that specific job node. Finally, pass these to the test runner command, in our case that is `npm run test` but this will depend on the test runner and programming language you use. 
+2. **Modifying the run command to use circleci test split**: In the `test` job's step that run tests, use `circleci tests glob` to select all test files, and pass that to `circleci tests split` to grab a subset of tests for that specific job node. Finally, pass these to the test runner command, in our case that is `npm run test` but this will depend on the test runner and programming language you use.
 
    ```yaml
    - run:

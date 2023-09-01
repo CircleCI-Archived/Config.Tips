@@ -1,3 +1,4 @@
+---
 name: GitHub Workflows
 description: |
   Workflows from Github are configurable automated processes that will run one or more jobs on specified events in GitHub.
