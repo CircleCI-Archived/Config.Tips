@@ -13,7 +13,7 @@ import type { TipData } from "../../../../utils/algoliaIndexer";
 
 const searchClient = algoliasearch(
   "1D3683KYJH",
-  "0c7233f111bb2a483645a400433ecb4d"
+  "0c7233f111bb2a483645a400433ecb4d",
 );
 
 type TipHit = Hit<TipData>;
@@ -86,21 +86,21 @@ type TipHitItemProps = {
 
 function TipHitItem({ hit, components }: TipHitItemProps) {
   return (
-      <a
-        href={`https://config.tips/c/${hit.kind.id}/${hit.id}`}
-        className="w-full font-bold"
-      >
-        <div className="aa-ItemContent">
-          <div className="aa-ItemIcon aa-ItemIcon--picture aa-ItemIcon--alignTop">
-            <img src={hit.kind.logo} alt={hit.title} width="40" height="40" />
-          </div>
+    <a
+      href={`https://config.tips/c/${hit.kind.id}/${hit.id}`}
+      className="w-full font-bold"
+    >
+      <div className="aa-ItemContent">
+        <div className="aa-ItemIcon aa-ItemIcon--picture aa-ItemIcon--alignTop">
+          <img src={hit.kind.logo} alt={hit.title} width="40" height="40" />
+        </div>
 
-          <div className="aa-ItemContentBody">
-            <div className="aa-ItemContentTitle">
-              <components.Highlight hit={hit} attribute="title" />
-            </div>
+        <div className="aa-ItemContentBody">
+          <div className="aa-ItemContentTitle">
+            <components.Highlight hit={hit} attribute="title" />
           </div>
         </div>
-      </a>
+      </div>
+    </a>
   );
 }

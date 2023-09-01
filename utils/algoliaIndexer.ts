@@ -18,7 +18,7 @@ const validatedEnv = env.parse(process.env);
 
 const client = algoliasearch(
   validatedEnv.ALGOLIA_APP_ID,
-  validatedEnv.ALGOLIA_WRITE_API_KEY
+  validatedEnv.ALGOLIA_WRITE_API_KEY,
 );
 
 type ConfigKindSchema = {
