@@ -33,7 +33,6 @@ const getTopConfigKinds = (count: number) => {
 };
 
 const topConfigKinds = getTopConfigKinds(6);
-
 ---
 
 <Layout title="Config.Tips - Home" slug="/">
@@ -81,9 +80,9 @@ const topConfigKinds = getTopConfigKinds(6);
       </section>
     </header>
     <section>
-    <SearchBar />
-      <div>
-        <h2 class="text-xl font-bold text-gray-500">Popular</h2>
+      <SearchBar />
+      <h2 class="text-xl font-bold text-gray-500">Popular</h2>
+      <div class="flex flex-col gap-4">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           {
             topConfigKinds.map((configKind) => {
@@ -93,16 +92,28 @@ const topConfigKinds = getTopConfigKinds(6);
                   className="w-full hover:bg-indigo-300 hover:text-gray-900 text-gray-300 duration-200 flex flex-row p-2"
                 >
                   <div class="flex">
-                    <img src={configKind.data.logo} alt="" class="w-16 h-16 invert opacity-80 p-2"/>
+                    <img
+                      src={configKind.data.logo}
+                      alt=""
+                      class="w-16 h-16 invert opacity-80 p-2"
+                    />
                   </div>
                   <div class="flex items-center justify-center flex-1 w-full">
-                    <h2 class="text-lg font-semibold">{configKind.data.name}</h2>
-                   </div>
+                    <h2 class="text-lg font-semibold">
+                      {configKind.data.name}
+                    </h2>
+                  </div>
                 </Card>
               );
             })
           }
         </div>
+        <Card
+          href={'/c/'}
+          className="w-full hover:bg-indigo-300 hover:text-gray-900 text-gray-300 duration-200 flex flex-row p-2 justify-center items-center text-center gradient-hover"
+        >
+          <h2 class="font-bold text-xl w-full">Explore All Configs</h2>
+        </Card>
       </div>
     </section>
   </div>
