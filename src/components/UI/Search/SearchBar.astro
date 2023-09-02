@@ -3,42 +3,50 @@ import AutoComplete from './AutoComplete';
 
 ---
 <AutoComplete client:only />
-<style is:global>
 
-  :root {
-    --aa-background-color-rgb: 24, 24, 27 !important;
-    --aa-input-background-color-rgb: 24, 24, 27 !important;
-  }
-  .aa-Form {
-    @apply bg-zinc-900 text-white border-indigo-300
+<style is:global>
+  .aa-Form, .aa-DetachedFormContainer, .aa-DetachedOverlay, .aa-DetachedContainer {
+    @apply bg-zinc-900
   }
   .aa-Input {
-    @apply text-white
+    @apply bg-zinc-900 text-gray-500 
   }
-  .aa-PanelLayout {
-    @apply bg-zinc-800 text-gray-200 rounded-md border border-indigo-300
-  }
-
-  .aa-List {
-    @apply flex flex-col
-  }
-  
-  .aa-Item{
-    @apply flex flex-row w-full;
+  .aa-Input::placeholder {
+    @apply  text-gray-600 
   }
 
   .aa-ItemIcon {
-    @apply bg-zinc-900
+    @apply w-8 h-8 p-0 shadow-none bg-transparent
   }
 
+  .aa-ItemIcon > img {
+    @apply w-full h-full p-0 border-none invert opacity-80
+  }
+
+  .aa-Panel {
+    @apply bg-zinc-900 rounded-md border border-indigo-600
+  }
+
+  .aa-PanelLayout {
+    @apply bg-zinc-900 border border-indigo-600 rounded-md
+  }
+  .aa-Item {
+    @apply border-b border-gray-800
+  }
+  .aa-ItemContent {
+    @apply py-4
+  }
+  .aa-ItemContentTitle {
+    @apply font-bold text-indigo-600 bg-none text-lg
+  }
+
+  .aa-ItemContent mark {
+    @apply text-yellow-200
+  }
   .aa-DetachedCancelButton {
-    @apply text-gray-200 border border-gray-500
+    @apply text-gray-500 border-gray-500
   }
-
-  .aa-ItemContentBody mark {
-    @apply bg-indigo-500 text-white px-1 rounded-sm
-  }
-  .aa-ItemIcon--picture > img {
-    @apply invert opacity-80
+  .aa-GradientBottom {
+    @apply hidden
   }
 </style>
