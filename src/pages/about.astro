@@ -1,0 +1,42 @@
+---
+import BreadCrumb from "../components/Navigation/BreadCrumb.astro";
+import ContributorList from "../components/UI/ContributorList/ContributorList.astro";
+import Layout from "../layouts/Layout.astro";
+
+---
+
+<Layout title="Config.Tips - About" slug="/about">
+  <BreadCrumb />
+  <div class="w-full">
+    <header>
+      <h1 class="text-4xl font-bold">About</h1>
+      <p>
+        Config.Tips is a project by the <a href="https://continuouslabs.circleci.com/" target="_blank">ContinuousLabs</a> team at <a href="https://circleci.com/" target="_blank">CircleCI</a>.
+      </p>
+      <p>
+        As developers, we each spend endless time configuring our tools and environments.
+        Between the millions of developers in the world, we've all picked up a thing or two, and have creative solutions to share.
+        So we built this site to share our tips with the world, collectively, via open-source.
+      </p>
+    </header>
+    <section>
+      <h2 class="text-2xl font-bold">Contributors</h2>
+      <p class="text-sm mb-2">
+        This site is built by the community, for the community.
+        We're always looking for new contributors to help us build out the site.
+        If you're interested in contributing, please check out our <a href="">Contributor docs</a>.
+      </p>
+      <ContributorList gh_slug="CircleCI-Public/Config.Tips" classNames={{
+        list: "flex flex-row row-wrap",
+        link: 'p-1, ring ring-indigo-300 rounded-full',
+        img: "w-12 h-12 rounded-full",
+      }} />
+
+    </section>
+  </div>
+</Layout>
+<style>
+  a {
+    @apply text-indigo-500 font-bold hover:text-indigo-300 italic duration-200;
+  }
+</style>

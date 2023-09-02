@@ -1,0 +1,63 @@
+---
+import Link from "../../Link.astro";
+
+interface Props {
+  gh_slug: string;
+  max?: number;
+  classNames?: {
+    root?: string;
+    list?: string;
+    listItem?: string;
+    link?: string;
+    img?: string;
+  };
+}
+
+type GitContributor = {
+  login: string;
+  avatar_url: string;
+  html_url: string;
+  contributions: number;
+};
+
+const { gh_slug, max = 9999, classNames } = Astro.props;
+
+const classNamesSetup = {
+  root: classNames?.root ?? '',
+  list: classNames?.list ?? '',
+  listItem: classNames?.listItem ?? '',
+  link: classNames?.link ?? '',
+  img: classNames?.img ?? '',
+};
+
+const api = (slug: string) => {
+  return `https://api.github.com/repos/${slug}/contributors`;
+};
+
+const getContributors = async (slug: string): Promise<GitContributor[]> => {
+  const res = await fetch(api(slug));
+  const data = await res.json();
+  if (!Array.isArray(data)) {
+    console.log(data);
+    throw new Error("Invalid response");
+  }
+  return data as GitContributor[];
+};
+
+const contributors = await getContributors(gh_slug);
+---
+
+<div class={classNamesSetup.root}>
+  <ul class={classNamesSetup.list}>
+    {
+      contributors.map((contributor, index) => (
+        index < max &&
+        <li class={classNamesSetup.listItem}>
+          <Link href={contributor.html_url} className={classNamesSetup.link}>
+            <img src={contributor.avatar_url} alt={contributor.login} class={classNamesSetup.img} />
+          </Link>
+        </li>
+      ))
+    }
+  </ul>
+</div>
