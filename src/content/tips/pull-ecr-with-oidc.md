@@ -6,11 +6,11 @@ description: |
 snippet: |
   version: 2.1
   jobs:
-  job_name:
-    docker:
-      - image: <your-image-uri>
-        aws_auth:
-          oidc_role_arn: <your-iam-role-arn>
+    pull_from_ecr:
+      docker:
+        - image: <your-image-uri>
+          aws_auth:
+            oidc_role_arn: <your-iam-role-arn>
 ---
 OpenID Connect(OIDC) securely connects your pipelines to AWS ECR without the need for storing long-lived secrets in CircleCI. 
 
