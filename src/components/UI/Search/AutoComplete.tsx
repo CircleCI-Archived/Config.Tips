@@ -91,12 +91,11 @@ function TipHitItem({ hit, components }: TipHitItemProps) {
       className="w-full font-bold"
     >
       <div className="aa-ItemContent">
-        <div className="aa-ItemIcon aa-ItemIcon--picture aa-ItemIcon--alignTop">
-          <img src={hit.kind.logo} alt={hit.title} width="40" height="40" />
+        <div className='text-sm font-normal lowercase'>
+          {hit.kind.name}
         </div>
-
         <div className="aa-ItemContentBody">
-          <div className="aa-ItemContentTitle">
+          <div className="aa-ItemContentTitle capitalize">
             <components.Highlight hit={hit} attribute="title" />
           </div>
         </div>
