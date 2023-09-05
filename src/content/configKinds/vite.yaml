@@ -2,7 +2,7 @@
 name: Vite
 description: Build front-end applications with blazing fast bundling, hot module replacement (HMR), TypeScript support, and more.
 website: https://vitejs.dev/config/
-logo: "/assets/images/logos/vite.svg"
+logo: simple-icons:vite
 body: >
   Vite (pronounced `/vit/`, like "veet") is a JavaScript front-end build tool, created by Evan You, the same person who created [Vue.js](https://vuejs.org/).
   Vite is an increasingly popular choice of build tool and common alternative to older tools like Webpack and Parcel.

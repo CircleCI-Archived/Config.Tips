@@ -5,7 +5,7 @@ description: |
 website: https://git-scm.com/docs/git-config
 body: |
   The `.gitconfig` file is a user-specific global configuration for Git. It is located in the user's home directory and contains settings such as the user's name, email, and preferred diff tool.
-logo: "/assets/images/logos/git.svg"
+logo: simple-icons:git
 snippet:
   lang: ini
   filePath: "~/.gitconfig"

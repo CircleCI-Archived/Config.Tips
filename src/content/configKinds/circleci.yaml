@@ -3,7 +3,7 @@ name: CircleCI
 description: Continuous integration and change validation platform used to implement DevOps practices. Test, build, and deploy your code on every commit.
 website: https://circleci.com/
 body: "CircleCI is a continuous integration and change validation plaform for DevOps practices. Use CircleCI to automate testing on every commit and orchestrate deployments."
-logo: "/assets/images/logos/circleci.svg"
+logo: simple-icons:circleci
 snippet:
   lang: yaml
   filePath: ".circleci/config.yml"

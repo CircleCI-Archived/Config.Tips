@@ -29,7 +29,7 @@ const pageDescription = "Explore the library of available developer config types
       <Card href={`/c/${configKind.id}`} className="w-72 gradient-hover">
         <div class="flex flex-col w-full h-full justify-between items-center">
           <div class="flex flex-col items-center p-2">
-            <img src={configKind.data.logo} alt={configKind.data.name} class="w-12 h-12 invert opacity-80 my-2" />
+            <Icon name={configKind.data.logo} class="w-12 h-12 my-2" />
             <h2 class="font-semibold p-0">{configKind.data.name}</h2>
             <p class="text-xs text-center p-2">{configKind.data.description}</p>
           </div>
