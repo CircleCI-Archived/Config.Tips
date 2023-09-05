@@ -8,7 +8,6 @@ import { z } from "astro/zod";
 
 const tipsPath = path.join("./src/content/tips");
 const configKindsPath = path.join("./src/content/configKinds");
-const siteBaseUrl = "https://config.tips";
 
 const env = z.object({
   ALGOLIA_APP_ID: z.string(),
@@ -84,7 +83,7 @@ async function processTips() {
         id: tipData.kind,
         name: kindData.name,
         description: kindData.description,
-        logo: new URL(kindData.logo, siteBaseUrl).toString(),
+        logo: kindData.logo,
       },
       contributor: tipData.contributor,
       body: removeMd(content),
