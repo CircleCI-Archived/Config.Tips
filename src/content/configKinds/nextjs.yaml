@@ -1,0 +1,16 @@
+---
+name: Next.js Config
+description: Next.js is an open-source web development framework providing React-based web applications with server-side rendering and static website generation.
+website: https://nextjs.org/docs/app/building-your-application/configuring
+body: Next.js is an open-source web development framework providing React-based web applications with server-side rendering and static website generation.
+logo: simple-icons:nextdotjs
+snippet:
+  lang: ts
+  filePath: "nextjs.config.js"
+  code: |
+    /** @type {import('next').NextConfig} */
+    const nextConfig = {
+      /* config options here */
+    }
+
+    module.exports = nextConfig
