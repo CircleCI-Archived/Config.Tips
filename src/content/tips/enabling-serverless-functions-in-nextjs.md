@@ -16,7 +16,7 @@ For example, you can create an API route in pages/api/hello.js:
 ```js
 // pages/api/hello.js
 export default function handler(req, res) {
-  res.status(200).json({ message: 'Hello from the serverless function!' })
+  res.status(200).json({ message: "Hello from the serverless function!" });
 }
 ```
 
