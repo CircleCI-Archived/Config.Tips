@@ -91,9 +91,7 @@ function TipHitItem({ hit, components }: TipHitItemProps) {
       className="w-full font-bold"
     >
       <div className="aa-ItemContent">
-        <div className='text-sm font-normal lowercase'>
-          {hit.kind.name}
-        </div>
+        <div className="text-sm font-normal lowercase">{hit.kind.name}</div>
         <div className="aa-ItemContentBody">
           <div className="aa-ItemContentTitle capitalize">
             <components.Highlight hit={hit} attribute="title" />
