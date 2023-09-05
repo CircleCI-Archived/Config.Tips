@@ -1,6 +1,8 @@
 ---
 import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
 import Link from "../Link.astro";
+import Icon from "astro-icon";
+
 const navLinks = [
   { href: "/about", text: "About" },
   { href: "/c/", text: "Explore" },
@@ -13,7 +15,10 @@ const hoverLinkStyle = "hover:text-indigo-300 transition-colors duration-200";
 <header class="lg:flex px-5 shadow gap-5 mb-2">
   <Astronav>
     <div class="flex w-full justify-between py-4">
-      <Link href="/" className={`font-bold flex items-center ${hoverLinkStyle}`}>Config.Tips</Link>
+      <Link href="/" className={`font-bold flex items-center ${hoverLinkStyle}`}>
+        <Icon name="logo" class="w-6 h-6 mr-2" />
+        <span>Config.Tips</span>
+      </Link>
       <div class="block lg:hidden">
         <MenuIcon class="w-4 h-4 text-gray-500" />
       </div>
