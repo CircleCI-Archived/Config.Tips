@@ -5,7 +5,7 @@ description: |
 website: https://nginx.org/en/docs/
 body: |
   Nginx is a web server that can also be used as a reverse proxy, load balancer, mail proxy and HTTP cache.
-logo: "/assets/images/logos/nginx.svg"
+logo: simple-icons:nginx
 snippet:
   lang: nginx
   filePath: "nginx.conf"
