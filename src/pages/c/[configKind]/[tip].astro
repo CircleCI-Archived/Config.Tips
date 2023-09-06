@@ -51,6 +51,7 @@ export async function getStaticPaths() {
       });
       return `<div class="rounded-md px-2 bg-gray-800 w-full overflow-x-auto"><pre><code class="language-${lang}">${html}</code></pre></div>`;
     };
+
     return marked(markdown, { renderer });
   }
 
