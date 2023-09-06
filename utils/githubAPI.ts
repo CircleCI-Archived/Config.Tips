@@ -28,9 +28,9 @@ export function getContributor(profileURL: string): GitHubContributor {
  * Fetches all contributors to the repository
  * Without authentication, this will be rate limited
  */
-export async function getContributors(token?: string) {
+export async function getContributors(gh_slug: string, token?: string) {
   const contributorsURL =
-    "https://api.github.com/repos/CircleCI-Public/Config.Tips/contributors";
+    `https://api.github.com/repos/${gh_slug}/contributors`;
   let headers: Record<string, string> = {
     Accept: "application/vnd.github.v3+json",
   };
