@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "serve-assets": "serve -p 3001 --no-port-switching ./public/assets/opengraph/images/",
-    "wait-for-assets": "wait-on -t 5000 http://localhost:3001/satori-bg-default.png",
+    "wait-for-assets": "wait-on -t 5000 http://localhost:3001/satori-bg-template.png",
     "kill-assets": "kill-port 3001 || true",
     "start": "astro dev",
     "build-setup": "pnpm run serve-assets & pnpm run wait-for-assets",

@@ -9,7 +9,7 @@ slug: string
 const { title, description, ogImage, slug} = Astro.props;
 const permalink = new URL(slug, Astro.site).toString();
 const image = () => {
-	let img = ogImage || '/assets/opengraph/images/default-opengraph.png';
+	let img = ogImage || '/assets/opengraph/images/config-tips-og-image.png';
 	return new URL(img, Astro.site).toString();
 }
 ---
