@@ -19,7 +19,10 @@ export async function getStaticPaths() {
       const type = ordered ? 'ol' : 'ul';
       const className = ordered ? 'list-decimal' : 'list-disc';
 
-      return `<${type} class="${className} list-inside">${body}</${type}>`
+      return `
+        <div class="text-left">
+          <${type} class="${className} list-inside text-left">${body}</${type}>
+        </div>`;
     };
 
     const paths = await Promise.all(configKinds.map(async (configKind) => {
