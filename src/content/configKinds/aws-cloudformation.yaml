@@ -1,0 +1,22 @@
+---
+name: AWS CloudFormation
+description: Define and provision AWS infrastructure and resources through CloudFormation Templates
+website: https://docs.aws.amazon.com/cloudformation/
+body: "AWS CloudFormation enables you to create and provision AWS infrastructure deployments predictably and repeatedly."
+logo: simple-icons:amazonaws
+snippet:
+  lang: yaml
+  filePath: "cloudformation-template.yml"
+  code: |
+    AWSTemplateFormatVersion: '2010-09-09'
+    Description: Simple EC2 Instance Example
+
+    Resources:
+      MyEC2Instance:
+        Type: AWS::EC2::Instance
+        Properties:
+          InstanceType: t2.micro
+          ImageId: ami-12345678
+          KeyName: my-key-pair
+          SecurityGroups:
+            - my-security-group
