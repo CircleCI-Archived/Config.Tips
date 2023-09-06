@@ -33,9 +33,9 @@ snippet: |
 
 AWS Cloudformation templates enable users to define and provision AWS infrastructure and resources in a declarative manner. Parameterizing your CloudFormation template is considered a best practice because it enhances the flexibility, maintainability, and reusability of your infrastructure code. These templates serve as a blueprint during the deployment process.
 
-In the example template, we have declared two parameters: `InstanceTypeParameter` and `KeyNameParameter`. These parameter must be provided by the user during the deployment process. Lets see how it works:
+In the example template, we have declared two parameters: `InstanceTypeParameter` and `KeyNameParameter`. These parameters must be provided by the user during the deployment process. Lets break them down:
 
-1. **`InstanceTypeParameter`**: Enables users to choose the instance type when the stack is created. A valid type must be used (e.g., t2.micro, t2.small, t2.medium). If the user specifies a type that's does not appear in the `AllowedValues`, the deployment will fail. If instance type is specified, the deployment will use `t2.micro` by default.
+1. **`InstanceTypeParameter`**: This enables users to choose the instance type when the stack is created. A valid type must be used (e.g., t2.micro, t2.small, t2.medium). If the user specifies a type that in not an allowed `AllowedValues`, the deployment will fail. If no instance type is specified, the deployment will use `t2.micro` by default.
 
    ```yaml
     InstanceTypeParameter:
@@ -67,7 +67,7 @@ Finally, these parameters are specified during the deployment process. For examp
 
 Parameterizing templates is particularly useful because they're reusable, eliminating the need to create a new unique template for every deployment.
 
-For example, if we wanted to use create another EC2 instance using a `t2.medium` type instead, we can still use exact same template. We would just need to specify a different value for the `InstanceTypeParameter`:
+For example, if we wanted to use create another EC2 instance, but using a `t2.medium` type instead, we can still use same template. We would just need to specify a different value for the `InstanceTypeParameter`:
 
 ```bash
     aws cloudformation create-stack --stack-name NewStackName \
