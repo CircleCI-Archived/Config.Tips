@@ -7,6 +7,7 @@ type StaticPath = {
   og: string;
   slug: string;
   title: string;
+  subtitle?: string;
 };
 
 export async function getStaticPaths() {
@@ -16,7 +17,8 @@ export async function getStaticPaths() {
   const tipPaths = tips.map((tip) => ({
     og: `c/${tip.data.kind.id}/${tip.slug}`,
     slug: tip.slug,
-    title: tip.data.title
+    title: tip.data.title,
+    subtitle: configs.find((config) => config.id === tip.data.kind.id)?.data.name || ""
   }));
   const configPaths = configs.map((config) => ({
     og: `c/${config.id}`,
@@ -25,14 +27,15 @@ export async function getStaticPaths() {
   }));
   paths.push(...tipPaths, ...configPaths);
 
-  return paths.map(({ title, og }) => {
+  return paths.map(({ title, og, slug, subtitle }) => {
     return {
       params: {
         og: og,
-        slug: title,
+        slug: slug,
       },
       props: {
         title,
+        subtitle
       },
     };
   });
@@ -41,8 +44,8 @@ export async function getStaticPaths() {
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
 export const GET: APIRoute = async function get({ props }) {
-  const { title } = props as Props;
-  return new Response(await PNG(OG(title)), {
+  const { title , subtitle} = props as Props;
+  return new Response(await PNG(OG(title, subtitle)), {
     headers: {
       "Content-Type": "image/png",
     },
