@@ -1,4 +1,5 @@
 ---
+import { getContributors } from "../../../../utils/githubAPI";
 import Link from "../../Link.astro";
 
 interface Props {
@@ -13,12 +14,6 @@ interface Props {
   };
 }
 
-type GitContributor = {
-  login: string;
-  avatar_url: string;
-  html_url: string;
-  contributions: number;
-};
 
 const { gh_slug, max = 9999, classNames } = Astro.props;
 
@@ -30,21 +25,8 @@ const classNamesSetup = {
   img: classNames?.img ?? '',
 };
 
-const api = (slug: string) => {
-  return `https://api.github.com/repos/${slug}/contributors`;
-};
+const contributors = await getContributors(gh_slug)
 
-const getContributors = async (slug: string): Promise<GitContributor[]> => {
-  const res = await fetch(api(slug));
-  const data = await res.json();
-  if (!Array.isArray(data)) {
-    console.log(data);
-    throw new Error("Invalid response");
-  }
-  return data as GitContributor[];
-};
-
-const contributors = await getContributors(gh_slug);
 ---
 
 <div class={classNamesSetup.root}>
