@@ -1,6 +1,6 @@
 ---
 name: AWS CloudFormation
-description: Define and provision AWS infrastructure and resources through CloudFormation Templates
+description: CloudFormation enables users to define and provision AWS infrastructure and resources using CloudFormation Templates.
 website: https://docs.aws.amazon.com/cloudformation/
 body: |
   "AWS CloudFormation enables you to define and provision AWS infrastructure and resources in a declarative manner.
