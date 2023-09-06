@@ -1,9 +1,8 @@
-
 export type GitHubContributor = {
   login: string;
   avatar_url: string;
   html_url: string;
-}
+};
 
 type GitHubAPIResponseContributors = GitHubContributor[];
 
@@ -13,9 +12,11 @@ type GitHubAPIResponseContributors = GitHubContributor[];
  * @returns
  */
 export function getContributor(profileURL: string): GitHubContributor {
-  const login = profileURL.split("/")[3]
+  const login = profileURL.split("/")[3];
   if (!login) {
-    throw new Error(`Could not parse GitHub login from profile URL: ${profileURL}`);
+    throw new Error(
+      `Could not parse GitHub login from profile URL: ${profileURL}`,
+    );
   }
   return {
     login,
@@ -29,8 +30,7 @@ export function getContributor(profileURL: string): GitHubContributor {
  * Without authentication, this will be rate limited
  */
 export async function getContributors(gh_slug: string, token?: string) {
-  const contributorsURL =
-    `https://api.github.com/repos/${gh_slug}/contributors`;
+  const contributorsURL = `https://api.github.com/repos/${gh_slug}/contributors`;
   let headers: Record<string, string> = {
     Accept: "application/vnd.github.v3+json",
   };
@@ -41,7 +41,7 @@ export async function getContributors(gh_slug: string, token?: string) {
   const response = await fetch(contributorsURL, { headers });
   if (!response.ok) {
     throw new Error(
-      `Could not fetch contributors from GitHub API: ${response.statusText}`
+      `Could not fetch contributors from GitHub API: ${response.statusText}`,
     );
   }
   try {
