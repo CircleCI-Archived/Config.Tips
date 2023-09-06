@@ -1,7 +1,8 @@
 ---
 kind: circleci
 title: Use CircleCI's Matrix Parameter to Reduce Duplication
-description: Learn how to use the matrix parameter to reduce code redundancy in your CircleCI config
+description: Learn how to use the matrix parameter to reduce code duplication
+  in your CircleCI config when running similar jobs with different inputs.
 contributor: https://github.com/brivu
 snippet: |
     version: 2.1
