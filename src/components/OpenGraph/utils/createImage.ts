@@ -11,14 +11,14 @@ export async function SVG(component: JSX.Element = OG()) {
       {
         name: "Roboto",
         data: await fs.readFile(
-          "./public/assets/opengraph/fonts/Roboto-Regular.ttf"
+          "./public/assets/opengraph/fonts/Roboto-Regular.ttf",
         ),
         weight: 400,
       },
       {
         name: "Roboto",
         data: await fs.readFile(
-          "./public/assets/opengraph/fonts/Roboto-Bold.ttf"
+          "./public/assets/opengraph/fonts/Roboto-Bold.ttf",
         ),
         weight: 800,
       },

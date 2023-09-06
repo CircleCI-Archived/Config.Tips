@@ -4,7 +4,10 @@ declare module "react" {
   }
 }
 
-export default function OG(title: string = "Config.Tips - Developer Config Tips", subtitle?: string) {
+export default function OG(
+  title: string = "Config.Tips - Developer Config Tips",
+  subtitle?: string,
+) {
   const backgroundImageURL = "http://localhost:3001/satori-bg-template.png";
   return (
     <div
