@@ -4,31 +4,31 @@ title: Parameterizing AWS CloudFormation Templates
 description: Parameterizing AWS CloudFormation templates enhances the flexibility, maintainability,and reusability of infrastructure code.
 contributor: https://github.com/brivu
 snippet: |
-    AWSTemplateFormatVersion: '2010-09-09'
-    Description: EC2 Instance with Parameterized Settings
+  AWSTemplateFormatVersion: '2010-09-09'
+  Description: EC2 Instance with Parameterized Settings
 
-    Parameters:
-    InstanceTypeParameter:
-        Type: String
-        Description: EC2 instance type
-        Default: t2.micro
-        AllowedValues:
-        - t2.micro
-        - t2.small
-        - t2.medium
-        ConstraintDescription: Must be a valid EC2 instance type.
+  Parameters:
+  InstanceTypeParameter:
+      Type: String
+      Description: EC2 instance type
+      Default: t2.micro
+      AllowedValues:
+      - t2.micro
+      - t2.small
+      - t2.medium
+      ConstraintDescription: Must be a valid EC2 instance type.
 
-    KeyNameParameter:
-        Type: AWS::EC2::KeyPair::KeyName
-        Description: Name of an existing EC2 KeyPair to enable SSH access to the instance.
+  KeyNameParameter:
+      Type: AWS::EC2::KeyPair::KeyName
+      Description: Name of an existing EC2 KeyPair to enable SSH access to the instance.
 
-    Resources:
-    MyEC2Instance:
-        Type: AWS::EC2::Instance
-        Properties:
-        InstanceType: !Ref InstanceTypeParameter
-        KeyName: !Ref KeyNameParameter
-        ImageId: ami-12345678 # Replace with your desired AMI ID
+  Resources:
+  MyEC2Instance:
+      Type: AWS::EC2::Instance
+      Properties:
+      InstanceType: !Ref InstanceTypeParameter
+      KeyName: !Ref KeyNameParameter
+      ImageId: ami-12345678 # Replace with your desired AMI ID
 ---
 
 AWS Cloudformation templates enable users to define and provision AWS infrastructure and resources in a declarative manner. Parameterizing your CloudFormation template is considered a best practice because it enhances the flexibility, maintainability, and reusability of your infrastructure code. These templates serve as a blueprint during the deployment process.
@@ -39,14 +39,14 @@ In the example template, we have declared two parameters: `InstanceTypeParameter
 
 ```yaml
 InstanceTypeParameter:
-    Type: String
-    Description: EC2 instance type
-    Default: t2.micro
-    AllowedValues:
+  Type: String
+  Description: EC2 instance type
+  Default: t2.micro
+  AllowedValues:
     - t2.micro
     - t2.small
     - t2.medium
-    ConstraintDescription: Must be a valid EC2 instance type.
+  ConstraintDescription: Must be a valid EC2 instance type.
 ```
 
 2. **`KeyNameParameter`**: This lets the users select an existing EC2 KeyPair, which enables SSH access to the instance. Since there is no `Default` value, the user is required to specify one during deployment. Otherwise, the deployment will fail.
