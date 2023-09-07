@@ -49,7 +49,7 @@ snippet: |
           AccessControl: public-read
 ---
 
-In this example, a reusable module for Amazon S3 bucket is created with it's own template in `s3-module.yaml`. The Main Stack Template creates two buckets using same template.
+In this example, a reusable module for Amazon S3 bucket is created with its own template in `s3-module.yaml`. The Main Stack Template creates two buckets using same template.
 
 Modularizing the AWS S3 Bucket creation into a separate template and reusing it in the main stack promotes code reusability and maintainability. Additional S3 buckets can easily be added by including additional stack resources in the main template without duplicating the S3 configuration code.
 
