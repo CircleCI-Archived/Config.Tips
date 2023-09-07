@@ -9,12 +9,14 @@ interface Props {
   title: string;
   slug: string;
   description?: string;
+  ogImage?: string;
 }
 
 const {
   title = "Config.Tips",
   description = "Simple sharable config tips for developers.",
   slug,
+  ogImage
 } = Astro.props;
 ---
 
@@ -24,6 +26,7 @@ const {
     title={title}
     slug={new URL(slug, Astro.site).pathname}
     description={description}
+    ogImage={ogImage || "/assets/opengraph/images/config-tips-og-image.png"}
   />
   <body class="flex flex-col">
     <NavBar />

@@ -3,15 +3,12 @@
 interface Props {
 title: string;
 description: string;
-ogImage?: string;
+ogImage: string;
 slug: string
 }
 const { title, description, ogImage, slug} = Astro.props;
 const permalink = new URL(slug, Astro.site).toString();
-const image = () => {
-	let img = ogImage || '/assets/opengraph/images/config-tips-og-image.png';
-	return new URL(img, Astro.site).toString();
-}
+const ogImageURL = new URL(ogImage, Astro.site).toString();
 ---
 <head>
 	<!-- Global Metadata -->
@@ -30,14 +27,13 @@ const image = () => {
 	<meta property="og:url" content={permalink} />
 	<meta property="og:title" content={title} />
 	<meta property="og:description" content={description} />
-	<meta property="og:image" content={image()} />
+	<meta property="og:image" content={ogImageURL} />
 
 	<!-- Twitter -->
 	<meta property="twitter:card" content="summary_large_image" />
 	<meta property="twitter:url" content={permalink} />
 	<meta property="twitter:title" content={title} />
 	<meta property="twitter:description" content={description} />
-	<meta property="twitter:image" content={image()} />
-
+	<meta property="twitter:image" content={ogImageURL} />
 	
 </head>
