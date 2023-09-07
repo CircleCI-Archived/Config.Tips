@@ -58,14 +58,13 @@ export async function getStaticPaths() {
       props: {
         title,
         subtitle,
-        author
+        author,
       },
     };
   });
 }
 
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
-
 
 export const GET: APIRoute = async function get({ props }) {
   const { title, subtitle, author } = props as Props;
