@@ -39,7 +39,7 @@ const topConfigKinds = getTopConfigKinds(5);
 <Layout title="Config.Tips - Home" slug="/">
   <div class="w-full">
     <header class="flex mt-2 mb-4 flex-col md:flex-row gap-6">
-      <section class="flex-1">
+      <section class="flex-1 justify-center text-center">
         <h1
           class="gradient-text font-black text-7xl"
         >
@@ -57,7 +57,7 @@ const topConfigKinds = getTopConfigKinds(5);
             >Continuous Labs
           </a> with ♥, from <a href="https://circleci.com/">CircleCI</a>.
         </p>
-        <div class="flex flex-row py-2 gap-2">
+        <div class="flex flex-row py-2 gap-2 justify-center">
           <Link
             href="https://github.com/CircleCI-Public/Config.Tips/issues/new?assignees=&labels=tip%2Ctriage&projects=&template=SUGGEST_TIP.yml&title=%5BNew+Tip%5D%3A+"
             class="text-indigo-300 px-2 py-1 rounded border border-indigo-300 bg-zinc-900 gradient-hover"
@@ -71,14 +71,6 @@ const topConfigKinds = getTopConfigKinds(5);
             Explore
           </Link>
         </div>
-      </section>
-      <section class="flex-1">
-        <CodeWindow
-          lang="yaml"
-          snippet={exampleSnippet}
-          filePath="config.tips"
-          className="gradient-hover"
-        />
       </section>
     </header>
     <section>
