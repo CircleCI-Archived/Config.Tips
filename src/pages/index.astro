@@ -41,20 +41,21 @@ const topConfigKinds = getTopConfigKinds(6);
     <header class="flex mt-2 mb-4 flex-col md:flex-row gap-6">
       <section class="flex-1">
         <h1
-          class="gradient-text bg-gradient-to-r from-purple-500 to-red-500 font-black text-6xl"
+          class="gradient-text font-black text-7xl"
         >
           Open-Source Config Tips
         </h1>
-        <p>
+        <p class="text-2xl">
           An open-source collection of useful snippets and tips for your
           favorite developer configs.
         </p>
-        <p class="text-xs py-1 text-gray-400">
-          Made by <Link href="https://continuouslabs.circleci.com/">
-            ContinuousLabs
-          </Link> with ♥, from <Link href="https://circleci.com/">
-            CircleCI
-          </Link>.
+        <p class="text-sm py-1 text-gray-400">
+          Made by <a
+            href="https://continuouslabs.circleci.com/"
+            target='="_blank"'
+            rel="noopener"
+            >Continuous Labs
+          </a> with ♥, from <a href="https://circleci.com/">CircleCI</a>.
         </p>
         <div class="flex flex-row py-2 gap-2">
           <Link
@@ -106,7 +107,7 @@ const topConfigKinds = getTopConfigKinds(6);
           }
         </div>
         <Card
-          href={'/c/'}
+          href={"/c/"}
           className="w-full hover:bg-indigo-300 hover:text-gray-900 text-gray-300 duration-200 flex flex-row p-2 justify-center items-center text-center gradient-hover"
         >
           <h2 class="font-bold text-xl w-full">Explore All Configs</h2>

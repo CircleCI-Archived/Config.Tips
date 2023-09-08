@@ -23,6 +23,10 @@ module.exports = {
         blurIn: "blurIn 200ms linear forwards",
         blurOut: "blurOut 200ms linear forwards",
       },
+      backgroundImage: (theme) => ({
+        "gradient-accent":
+          "linear-gradient(to left bottom, rgb(103, 232, 249), rgb(16, 185, 129), rgb(147, 197, 253))",
+      }),
     },
   },
   plugins: [],
