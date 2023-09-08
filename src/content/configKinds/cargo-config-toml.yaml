@@ -1,0 +1,30 @@
+---
+name: .cargo/config.toml
+description: Cargo is the package manager and build tool for the Rust programming language. It's used to manage metadata, targets, dependencies, and more.
+website: https://doc.rust-lang.org/stable/cargo/
+logo: simple-icons:rust
+body: |
+  The Cargo configuration file (`config.toml`) can be found in a variety of places:
+  - `my-project/.cargo/config.toml`
+  - `/.cargo/config.toml`
+  - `$CARGO_HOME/config.toml`
+
+  Using this file, you can configure all kinds of settings as they relate to building, aliasing commands, setting environment variables, configuring registry resolution, and more!
+snippet:
+  lang: toml
+  filePath: "Cargo.toml"
+  code: |
+    [alias]
+    b = "build"
+    t = "test"
+
+    [build]
+    jobs = 16
+    rustc-wrapper = "/path/to/sccache"
+    target-dir = "target"
+
+    [cargo-new]
+    vcs = "hg"
+
+    [target.aarch64-apple-darwin]
+    rustflags = ["-C", "link-arg=-fuse-ld=/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld"]
