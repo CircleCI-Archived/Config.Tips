@@ -1,10 +1,11 @@
 ---
 import { getCollection } from "astro:content";
+import Icon from "astro-icon";
+
 import Link from "../components/Link.astro";
-import Layout from "../layouts/Layout.astro";
 import Card from "../components/UI/Card.astro";
 import SearchBar from "../components/UI/Search/SearchBar.astro";
-import Icon from "astro-icon";
+import Layout from "../layouts/Layout.astro";
 
 const configKinds = await getCollection("configKinds");
 const allTips = await getCollection("tips");

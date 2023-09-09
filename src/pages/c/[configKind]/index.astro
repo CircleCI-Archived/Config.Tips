@@ -1,14 +1,15 @@
 ---
 import type { InferGetStaticPropsType } from 'astro';
-import {marked} from 'marked';
 import { getCollection } from 'astro:content';
-import Layout from '../../../layouts/Layout.astro';
-import CodeWindow from '../../../components/CodeWindow/CodeWindow.astro';
-import Card from '../../../components/UI/Card.astro';
-import Link from '../../../components/Link.astro';
 import Icon from 'astro-icon';
-import BreadCrumb from '../../../components/Navigation/BreadCrumb.astro';
+import {marked} from 'marked';
+
+import CodeWindow from '../../../components/CodeWindow/CodeWindow.astro';
+import Link from '../../../components/Link.astro';
 import type { BreadCrumbList } from '../../../components/Navigation/BreadCrumb.astro';
+import BreadCrumb from '../../../components/Navigation/BreadCrumb.astro';
+import Card from '../../../components/UI/Card.astro';
+import Layout from '../../../layouts/Layout.astro';
 
 export async function getStaticPaths() {
     const configKinds = await getCollection("configKinds");
