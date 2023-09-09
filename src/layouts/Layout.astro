@@ -21,6 +21,7 @@ const {
 ---
 
 <!DOCTYPE html>
+
 <html lang="en">
   <HeadBase
     title={title}
@@ -34,7 +35,9 @@ const {
       <slot />
     </main>
     <FooterArea className="px-4 mx-auto w-full lg:max-w-screen-xl" />
-  </body><style is:global>
+  </body>
+  
+  <style is:global>
     *,
     *:before,
     *:after {
@@ -101,25 +104,30 @@ const {
     pre {
       @apply p-2;
     }
-
+    
     .gradient-text {
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
+      @apply bg-gradient-accent;
     }
 
     .gradient-hover {
       @apply relative;
     }
+
     .gradient-hover::after {
       content: "";
       position: absolute;
       inset: 0;
       z-index: -1;
-      @apply bg-gradient-to-r from-amber-500 to-pink-500 rounded-md animate-blurIn;
+      @apply rounded-md bg-gradient-accent animate-blurIn;
     }
+
     .gradient-hover:hover::after {
       @apply blur-sm animate-blurOut;
     }
+
   </style>
+
 </html>

@@ -33,30 +33,31 @@ const getTopConfigKinds = (count: number) => {
   return countedConfigKinds.sort((a, b) => b.count - a.count).slice(0, count);
 };
 
-const topConfigKinds = getTopConfigKinds(6);
+const topConfigKinds = getTopConfigKinds(5);
 ---
 
 <Layout title="Config.Tips - Home" slug="/">
   <div class="w-full">
     <header class="flex mt-2 mb-4 flex-col md:flex-row gap-6">
-      <section class="flex-1">
+      <section class="flex-1 justify-center text-center">
         <h1
-          class="gradient-text bg-gradient-to-r from-purple-500 to-red-500 font-black text-6xl"
+          class="gradient-text font-black text-7xl"
         >
           Open-Source Config Tips
         </h1>
-        <p>
+        <p class="text-2xl">
           An open-source collection of useful snippets and tips for your
           favorite developer configs.
         </p>
-        <p class="text-xs py-1 text-gray-400">
-          Made by <Link href="https://continuouslabs.circleci.com/">
-            ContinuousLabs
-          </Link> with ♥, from <Link href="https://circleci.com/">
-            CircleCI
-          </Link>.
+        <p class="text-sm py-1 text-gray-400">
+          Made by <a
+            href="https://continuouslabs.circleci.com/"
+            target='="_blank"'
+            rel="noopener"
+            >Continuous Labs
+          </a> with ♥, from <a href="https://circleci.com/">CircleCI</a>.
         </p>
-        <div class="flex flex-row py-2 gap-2">
+        <div class="flex flex-row py-2 gap-2 justify-center">
           <Link
             href="https://github.com/CircleCI-Public/Config.Tips/issues/new?assignees=&labels=tip%2Ctriage&projects=&template=SUGGEST_TIP.yml&title=%5BNew+Tip%5D%3A+"
             class="text-indigo-300 px-2 py-1 rounded border border-indigo-300 bg-zinc-900 gradient-hover"
@@ -71,46 +72,39 @@ const topConfigKinds = getTopConfigKinds(6);
           </Link>
         </div>
       </section>
-      <section class="flex-1">
-        <CodeWindow
-          lang="yaml"
-          snippet={exampleSnippet}
-          filePath="config.tips"
-          className="gradient-hover"
-        />
-      </section>
     </header>
     <section>
-      <SearchBar />
-      <h2 class="text-xl font-bold text-gray-500">Popular</h2>
+      <div class="my-4">
+        <SearchBar />
+      </div>
+      <h2 class="text-3xl text-center font-bold text-gray-200 uppercase py-4">Popular</h2>
       <div class="flex flex-col gap-4">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="flex flex-row flex-wrap gap-4 items-stretch justify-center px-12">
           {
             topConfigKinds.map((configKind) => {
               return (
-                <Card
-                  href={`/c/${configKind.id}/`}
-                  className="w-full hover:bg-indigo-300 hover:text-gray-900 text-gray-300 duration-200 flex flex-row p-2"
-                >
-                  <div class="flex">
-                    <Icon name={configKind.data.logo} class="w-16 h-16" />
+                <Card href={`/c/${configKind.id}`} className="w-72 gradient-hover">
+                <div class="flex flex-col w-full h-full justify-between items-center">
+                  <div class="flex flex-col items-center p-2">
+                    <Icon name={configKind.data.logo} class="w-12 h-12 my-2" />
+                    <h2 class="font-semibold p-0">{configKind.data.name}</h2>
+                    <p class="text-xs text-center p-2">{configKind.data.description}</p>
                   </div>
-                  <div class="flex items-center justify-center flex-1 w-full">
-                    <h2 class="text-lg font-semibold">
-                      {configKind.data.name}
-                    </h2>
-                  </div>
-                </Card>
+                  <footer class=" justify-self-end w-full bg-zinc-900 rounded-b-md mt-2 py-1 px-2 text-xs text-gray-500">
+                    <Icon name="mdi:file-multiple" class="inline-block w-4 h-4 mr-1" /> <span>{configKind.count}</span>
+                  </footer>
+                </div>
+              </Card>
               );
             })
           }
         </div>
-        <Card
-          href={'/c/'}
-          className="w-full hover:bg-indigo-300 hover:text-gray-900 text-gray-300 duration-200 flex flex-row p-2 justify-center items-center text-center gradient-hover"
-        >
-          <h2 class="font-bold text-xl w-full">Explore All Configs</h2>
-        </Card>
+        <div class="flex h-36 justify-center items-center text-gray-200 relative">
+          <div class="absolute w-60 h-20  bg-gradient-to-r from-green-200 via-green-400 to-purple-700 blur-2xl opacity-80 -z-10"></div>
+          <a href="/c/" class="text-4xl px-6 py-4 rounded bg-zinc-900 uppercase border border-zinc-700 gradient-hover duration-500">
+              Explore
+            </a>
+        </div>
       </div>
     </section>
   </div>
