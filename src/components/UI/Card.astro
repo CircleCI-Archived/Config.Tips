@@ -3,10 +3,10 @@ import Link from "../Link.astro";
 type Props = {
   href: string;
   className?: string;
-}
-const {href, className} = Astro.props
-const baseStyles = "shadow bg-zinc-800 border border-zinc-700 rounded"
-const cardStyles = baseStyles + ' ' + (className || '')
+};
+const { href, className } = Astro.props as Props;
+const baseStyles = "shadow bg-zinc-800 border border-zinc-700 rounded";
+const cardStyles = baseStyles + " " + (className || "");
 ---
 
 <div class={cardStyles}>

@@ -11,7 +11,7 @@ interface Props {
   delimiter?: string
 }
 
-const { breadCrumbList, delimiter = "›" } = Astro.props;
+const { breadCrumbList, delimiter = "›" } = Astro.props as Props;
 const list = breadCrumbList || [];
 list.unshift({
   title: "Home",

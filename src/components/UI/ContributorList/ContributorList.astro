@@ -15,7 +15,7 @@ interface Props {
 }
 
 
-const { gh_slug, max = 9999, classNames } = Astro.props;
+const { gh_slug, max = 9999, classNames } = Astro.props as Props;
 
 const classNamesSetup = {
   root: classNames?.root ?? '',

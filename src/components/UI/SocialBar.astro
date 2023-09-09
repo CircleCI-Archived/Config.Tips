@@ -12,7 +12,7 @@ type Sociallink = {
 interface Props {
   contentTitle: string;
 }
-const { contentTitle } = Astro.props;
+const { contentTitle } = Astro.props as Props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const tweetBody = encodeURIComponent(
   "Check out what the @CircleCI Labs team is working on!"

@@ -29,7 +29,7 @@ export async function getStaticPaths() {
 
 // Your type and props extraction remain unchanged.
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
-const { configKind, htmlBody, tips } = Astro.props;
+const { configKind, htmlBody, tips } = Astro.props as Props;
 const websiteBase = new URL(configKind.data.website).hostname
 
 const breadCrumbList: BreadCrumbList = [

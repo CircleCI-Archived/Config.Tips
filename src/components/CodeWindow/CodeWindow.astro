@@ -10,7 +10,7 @@ type Props = {
   filePath?: string;
   className?: string;
 };
-const { snippet, lang, filePath = "unknown", className } = Astro.props;
+const { snippet, lang, filePath = "unknown", className } = Astro.props as Props;
 
 const safeSnippet = encodeURIComponent(snippet);
 const codeId = `C${nanoid(5)}`;
