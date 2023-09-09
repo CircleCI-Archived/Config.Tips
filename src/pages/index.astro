@@ -1,23 +1,10 @@
 ---
 import { getCollection } from "astro:content";
-import CodeWindow from "../components/CodeWindow/CodeWindow.astro";
 import Link from "../components/Link.astro";
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/UI/Card.astro";
 import SearchBar from "../components/UI/Search/SearchBar.astro";
 import Icon from "astro-icon";
-
-const exampleSnippet = `
-# Your favorite developer configs
-# +-----------------------------+
-# |                             |
-# |  Config.Tips                |
-# |                             |
-# |  Submit your tip 🕵️‍♂️         |
-# |  Share or snag!             |
-# |                             |
-# +-----------------------------+
-`;
 
 const configKinds = await getCollection("configKinds");
 const allTips = await getCollection("tips");
