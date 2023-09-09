@@ -6,6 +6,9 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://config.tips",
+  site:
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:4321"
+      : "https://config.tips",
   integrations: [tailwind(), react(), sitemap()],
 });
