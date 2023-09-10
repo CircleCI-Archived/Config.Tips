@@ -1,13 +1,12 @@
-import { useEffect, useRef, createElement, Fragment } from "react";
-import { createRoot } from "react-dom/client";
-import { autocomplete, getAlgoliaResults } from "@algolia/autocomplete-js";
-import algoliasearch from "algoliasearch/lite";
+import "@algolia/autocomplete-theme-classic";
 
 import type { AutocompleteComponents } from "@algolia/autocomplete-js";
+import { autocomplete, getAlgoliaResults } from "@algolia/autocomplete-js";
 import type { Hit } from "@algolia/client-search";
+import algoliasearch from "algoliasearch/lite";
+import { createElement, Fragment, useEffect, useRef } from "react";
 import type { Root } from "react-dom/client";
-
-import "@algolia/autocomplete-theme-classic";
+import { createRoot } from "react-dom/client";
 
 import type { TipData } from "../../../../utils/algoliaIndexer";
 

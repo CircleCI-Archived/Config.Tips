@@ -1,8 +1,9 @@
 import type { APIRoute, InferGetStaticPropsType } from "astro";
+import { getCollection } from "astro:content";
+
+import { getContributor } from "../../../utils/githubAPI";
 import OG from "../../components/OpenGraph/OG";
 import { PNG } from "../../components/OpenGraph/utils/createImage";
-import { getCollection } from "astro:content";
-import { getContributor } from "../../../utils/githubAPI";
 
 type StaticPath = {
   og: string;

@@ -1,4 +1,4 @@
-import { z, defineCollection, reference } from "astro:content";
+import { defineCollection, reference, z } from "astro:content";
 
 const seoDescription = z.string().min(100).max(160);
 

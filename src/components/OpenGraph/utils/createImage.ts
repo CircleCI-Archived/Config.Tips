@@ -1,7 +1,8 @@
-import OG from "../OG";
-import satori from "satori";
 import fs from "fs/promises";
+import satori from "satori";
 import sharp from "sharp";
+
+import OG from "../OG";
 
 export async function SVG(component: JSX.Element = OG()) {
   return await satori(component, {

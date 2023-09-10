@@ -1,16 +1,17 @@
 ---
 import type { InferGetStaticPropsType } from "astro";
-import { marked } from "marked";
 import { getCollection } from "astro:content";
-import Layout from "../../../layouts/Layout.astro";
-import CodeWindow from "../../../components/CodeWindow/CodeWindow.astro";
-import SocialBar from "../../../components/UI/SocialBar.astro";
-import Link from "../../../components/Link.astro";
 import Icon from "astro-icon";
-import BreadCrumb from "../../../components/Navigation/BreadCrumb.astro";
-import type { BreadCrumbList } from "../../../components/Navigation/BreadCrumb.astro";
-import * as shiki from "shiki";
+import { marked } from "marked";
 import { nanoid } from 'nanoid'
+import * as shiki from "shiki";
+
+import CodeWindow from "../../../components/CodeWindow/CodeWindow.astro";
+import Link from "../../../components/Link.astro";
+import type { BreadCrumbList } from "../../../components/Navigation/BreadCrumb.astro";
+import BreadCrumb from "../../../components/Navigation/BreadCrumb.astro";
+import SocialBar from "../../../components/UI/SocialBar.astro";
+import Layout from "../../../layouts/Layout.astro";
 
 export async function getStaticPaths() {
   function getContributor(profileURL?: string) {
@@ -92,7 +93,7 @@ const {
   slug,
   configKind,
   contributor,
-} = Astro.props;
+} = Astro.props as Props;
 
 const breadCrumbList: BreadCrumbList = [
   {
@@ -143,7 +144,7 @@ const breadCrumbList: BreadCrumbList = [
           >
             <img
               src={contributor.image}
-              alt="Contributor profile picture"
+              alt="Contributor profile avatar"
               class="w-8 h-8 rounded-full"
             />
             <figcaption>{contributor.name}</figcaption>

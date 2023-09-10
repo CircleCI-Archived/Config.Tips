@@ -1,10 +1,11 @@
-import fs from "fs/promises";
-import path from "path";
-import matter from "gray-matter";
-import removeMd from "remove-markdown";
 import "dotenv/config";
+
 import algoliasearch from "algoliasearch";
 import { z } from "astro/zod";
+import fs from "fs/promises";
+import matter from "gray-matter";
+import path from "path";
+import removeMd from "remove-markdown";
 
 const tipsPath = path.join("./src/content/tips");
 const configKindsPath = path.join("./src/content/configKinds");
