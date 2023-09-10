@@ -14,6 +14,8 @@
     "astro": "astro",
     "format": "prettier --write .",
     "format:ci": "prettier --check .",
+    "lint": "eslint --ext .astro,.js,.jsx,.ts,.tsx . --fix",
+    "lint:ci": "eslint --ext .astro,.js,.jsx,.ts,.tsx .",
     "test": "vitest run",
     "ci": "prettier --check . && vitest run && astro build",
     "algolia:sync": "rm -rf ./.algolia; tsc -p ./tsconfig.algolia.json && mv ./.algolia/utils/algoliaIndexer.js ./.algolia/utils/algoliaIndexer.mjs && node ./.algolia/utils/algoliaIndexer.mjs"
