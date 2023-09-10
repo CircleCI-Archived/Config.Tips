@@ -10,6 +10,7 @@ module.exports = {
     // ... any other plugins you're using
     "simple-import-sort",
   ],
+  ignorePatterns: ["dist/"],
   // ...
   overrides: [
     {
