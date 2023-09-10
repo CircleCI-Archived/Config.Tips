@@ -17,7 +17,7 @@
     "lint": "eslint --ext .astro,.js,.jsx,.ts,.tsx . --fix",
     "lint:ci": "eslint --ext .astro,.js,.jsx,.ts,.tsx .",
     "test": "vitest run",
-    "ci": "prettier --check . && vitest run && astro build",
+    "ci": "pnpm run format:ci && pnpm run lint:ci && pnpm run test && pnpm run build",
     "algolia:sync": "rm -rf ./.algolia; tsc -p ./tsconfig.algolia.json && mv ./.algolia/utils/algoliaIndexer.js ./.algolia/utils/algoliaIndexer.mjs && node ./.algolia/utils/algoliaIndexer.mjs"
   },
   "dependencies": {
