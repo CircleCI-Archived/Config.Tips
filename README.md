@@ -13,7 +13,7 @@ Made by [ContinuousLabs](https://continuouslabs.circleci.com/) from [CircleCI](h
 
 ## Contributing
 
-Welcome contributors! Please see our [Contributing Guide](./.github/CONTRIBUTING.md) to get started. We'd love to help! Join us on [Discord](https://circleci.com/discord) if you have any questions.
+Welcome contributors! Please see our [Contributing Guide](./.github/CONTRIBUTING.md) to get started. We'd love to help! Join us on [Discord](https://discord.gg/UWsWB44zYj) if you have any questions.
 
 ### Have a tip to share?
 
@@ -25,6 +25,6 @@ Want to skip the PR? No problem! You can also [submit a tip here](https://github
 
 ### Have a question or feedback?
 
-We'd love to hear from you! Join us on [Discord](https://circleci.com/discord) and let us know what you think.
+We'd love to hear from you! Join us on [Discord](https://discord.gg/UWsWB44zYj) and let us know what you think.
 
 Find a bug or other issue? Please [open an issue](https://github.com/CircleCI-Public/Config.Tips/issues/new/choose).
