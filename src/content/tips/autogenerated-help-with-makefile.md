@@ -5,7 +5,7 @@ description: Auto generated help subcommand based on the comments of other targe
 contributor: https://github.com/chilladx
 snippet: |
   help: ## Display this help screen
-	  @grep -h -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+          @grep -h -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 ---
 
 This snippet handles the `make help` command, and uses the comments from other targets to provide the user with a description of the target. You only need to add a comment (prefixed with `##`) for each target, and the snippet will display the comment it nicely.
