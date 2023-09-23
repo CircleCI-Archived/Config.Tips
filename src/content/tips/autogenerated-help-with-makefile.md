@@ -9,3 +9,21 @@ snippet: |
 ---
 
 This snippet handles the `make help` command, and uses the comments from other targets to provide the user with a description of the target. You only need to add a comment (prefixed with `##`) for each target, and the snippet will display the comment it nicely.
+
+For example, here is a Makefile:
+
+```make
+blah: ## Builds blah from blah.c file
+  cc blah.c -o blah
+
+help: ## Display this help screen
+  @grep -h -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+```
+
+And the output:
+
+```sh
+$ make help
+blah                           Builds blah from blah.c file
+help                           Display this help screen
+```
