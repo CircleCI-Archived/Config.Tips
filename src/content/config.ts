@@ -32,6 +32,7 @@ export const Lang = z.union([
   z.literal("ini"),
   z.literal("properties"),
   z.literal("jinja-html"),
+  z.literal("javascript"),
   z.literal("json"),
   z.literal("json5"),
   z.literal("jsonc"),

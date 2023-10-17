@@ -1,0 +1,19 @@
+---
+name: Astro
+description: Astro builds fast content sites, powerful web applications, dynamic server APIs, and everything in-between.
+website: https://astro.build/
+body: |
+  Astro is an all-in-one web framework for building fast, content-focused websites.
+  Astro is a popular choice for building static websites such as blogs, marketing sites, and documentation.
+  Use JavaScript to describe how to build your website and generate static HTML.
+  Take advantage of "islands" to bring your favorite frontend framework into your Astro site, or bring more than one!
+logo: simple-icons:astro
+snippet:
+  lang: javascript
+  filePath: "astro.config.mjs"
+  code: |
+    import { defineConfig } from 'astro/config'
+
+    export default defineConfig({
+      // your configuration options here...
+    })
