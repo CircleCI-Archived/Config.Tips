@@ -12,7 +12,6 @@ snippet: |
         ? "http://localhost:4321"
         : "https://config.tips",
   });
-
 ---
 
 In many build systems, including [Vite](https://vitejs.dev/), the value of `NODE_ENV` is automatically set to `development` when running in development mode and `production` when building. Some deployment platforms like [Netlify](https://www.netlify.com/) may also set the `production` value automatically.
