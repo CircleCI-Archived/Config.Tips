@@ -13,11 +13,23 @@ import Layout from '../../../layouts/Layout.astro';
 
 export async function getStaticPaths() {
     const configKinds = await getCollection("configKinds");
+    const renderer = new marked.Renderer();
+
+    // Custom render lists in the body
+    renderer.list = (body, ordered) => {
+      const type = ordered ? 'ol' : 'ul';
+      const className = ordered ? 'list-decimal' : 'list-disc';
+
+      return `
+        <div class="text-left">
+          <${type} class="${className} list-inside text-left">${body}</${type}>
+        </div>`;
+    };
 
     const paths = await Promise.all(configKinds.map(async (configKind) => {
         const allTips = await getCollection("tips");
         const tips = allTips.filter(tip => tip.data.kind.id === configKind.id);
-        const htmlBody = marked(configKind.data.body);
+        const htmlBody = marked(configKind.data.body, { renderer });
         return {
             params: { configKind: configKind.id },
             props: { configKind, tips, htmlBody },

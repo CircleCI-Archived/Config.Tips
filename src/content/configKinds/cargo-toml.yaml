@@ -1,0 +1,27 @@
+---
+name: Cargo.toml
+description: Cargo is the package manager and build tool for the Rust programming language. It's used to manage metadata, targets, dependencies, and more.
+website: https://doc.rust-lang.org/stable/cargo/
+logo: simple-icons:rust
+body: >
+  `Cargo.toml` is a manifest file for Rust projects, which includes things like metadata (project name, author, license, etc.), a list of targets (i.e. binaries, libraries, etc.), and dependencies for the project.
+  In a standard Rust project, a Cargo.toml is in the root of the project and a sibling to the `src/` directory. Using Cargo, it generates a `Cargo.lock` file that can ensure predictable and reproducible dependency resolution between copies of the project.
+snippet:
+  lang: toml
+  filePath: "Cargo.toml"
+  code: |
+    [package]
+    name = "my-rust-project"
+    version = "0.1.0"
+    edition = "2021"
+
+    [[bin]]
+    name = "my-binary"
+    path = "src/bin/main.rs"
+
+    [lib]
+    name = "libmy_binary"
+    path = "src/lib.rs"
+
+    [dependencies]
+    clap = { version = "4.4.0", features = ["derive"] }
