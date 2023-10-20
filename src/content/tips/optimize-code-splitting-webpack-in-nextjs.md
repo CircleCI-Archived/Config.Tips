@@ -1,6 +1,6 @@
 ---
 kind: nextjs
-title: Optimize code splitting with Wepback
+title: Optimize code splitting with Webpack
 description: You can customize the Webpack configuration in Next.js to optimize your bundle size or making other advanced adjustments.
 contributor: https://github.com/rsylvian
 snippet: |
