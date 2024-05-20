@@ -4,7 +4,7 @@ parameters:
   cache-version:
     type: string
     default: v1
-
+# denote the executors
 executors:
   node:
     docker:
