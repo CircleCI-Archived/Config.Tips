@@ -42,6 +42,14 @@ commands:
       - run: pnpm run build
 
 jobs:
+  super-build:
+    docker:
+      - image: cimg/base:2023.03
+    steps:
+      - checkout
+      - run: echo "this is the build job"
+      - run: set
+      - run: sleep 1000
   test:
     executor: node
     steps:
