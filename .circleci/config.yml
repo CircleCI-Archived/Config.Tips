@@ -65,8 +65,7 @@ workflows:
   test:
     jobs:
       - test
-      - super-build:
-          context: configtips_algolia
+      - super-build
   indexSearch:
     jobs:
       - indexSearch:
