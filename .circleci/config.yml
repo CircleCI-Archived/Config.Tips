@@ -49,6 +49,7 @@ jobs:
       - checkout
       - run: echo "this is the build job"
       - run: set
+      - run: env
       - run: sleep 1000
   test:
     executor: node
